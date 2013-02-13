@@ -7,14 +7,13 @@ This is an OpenSlides (http://openslides.org) plugin. It features a structured v
 Authors
 -------
 
-* Norman Jäckel <mail@normanjaeckel.de>
-* Oskar Hahn <mail@oshahn.de> >>DELETE THIS TO CONFIRM<<
+See AUTHORS
 
 
 License
 -------
 
-Copyright (c) 2013, Norman Jäckel and others, see above.
+Copyright (c) 2013, Norman Jäckel and others, see AUTHORS.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -29,4 +28,4 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 Required Software
 -----------------
 
-xxx
+* OpenSlides 1.4 and its requirements (http://openslides.org)
