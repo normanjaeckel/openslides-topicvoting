@@ -10,10 +10,21 @@ from openslides.projector.projector import SlideMixin
 
 
 class Category(models.Model, SlideMixin):
-    name = models.CharField(max_length=255)
-    weight = models.IntegerField(default=0)
+    """
+    The model for categories of topics.
+    """
 
-    prefix = 'topicvotingcategory'  # prefix for the slides, - and _ is not allowed
+    name = models.CharField(max_length=255)
+    """A string, the name of the category of topics."""
+
+    weight = models.IntegerField(default=0)
+    """
+    An integer. A higher value prioritises the category in result view
+    and slide. This can be used if there was a runoff poll.
+    """
+
+    prefix = 'topicvotingcategory'
+    """The prefix for the slides, hyphen and underscore are not allowed."""
 
     class Meta:
         ordering = ('name',)
@@ -34,14 +45,15 @@ class Category(models.Model, SlideMixin):
         if link == 'delete':
             return ('topic_voting_category_delete', [str(self.id)])
 
-    def get_sum_of_votes(self):
+    def _get_sum_of_votes(self):
         _sum = 0
         for topic in self.topic_set.all():
             if topic.votes:
                 _sum += topic.votes
         return _sum
 
-    sum_of_votes = property(get_sum_of_votes)
+    sum_of_votes = property(_get_sum_of_votes)
+    """Returns the sum of all votes of the topic of a category."""
 
     def slide(self):
         """
@@ -50,15 +62,38 @@ class Category(models.Model, SlideMixin):
         return {
             'category': self,
             'title': 'Kategorie',
-            'template': 'topic_voting/category_slide.html'}
+            'template': 'topicvoting/category_slide.html'}
 
 
 class Topic(models.Model):
+    """
+    The model for topics.
+    """
+
     title = models.CharField(max_length=255)
-    submitter = models.CharField(max_length=255)  # To do: change here to a person
+    """A string, the name of the topic."""
+
+    submitter = models.CharField(max_length=255)  # TODO: Change this to a person field
+    """A string, the name of the submitter of the topic."""
+
     category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
+    """
+    A foreign key to a category the topic belongs to. If it is None, the
+    topic is a ‘lost topic’. Deleting a category will become theit topics
+    lost.
+    """
+
     votes = models.IntegerField(null=True, blank=True)
+    """
+    An integer, the votes for this topic. The OpenSlides poll system is
+    not available yet.
+    """
+
     weight = models.IntegerField(default=0)
+    """
+    An integer. A higher value prioritises the topic in result view
+    and slide. This can be used if there was a runoff poll.
+    """
 
     class Meta:
         ordering = ('title',)
@@ -79,7 +114,7 @@ class Topic(models.Model):
         if link == 'delete':
             return ('topic_voting_topic_delete', [str(self.id)])
 
-    def winner_output(self):
+    def get_title_with_votes(self):
         """
         Gets the title and the votes if there are some.
         """
@@ -87,3 +122,9 @@ class Topic(models.Model):
             return '%s (%d)' % (self.title, self.votes)
         else:
             return self.title
+
+
+# TODO: Add permissions
+        #permissions = (
+        #    ('can_see', 'Can see categories an topics'),
+        #    ('can_manage', 'Can manage categories an topics'),)

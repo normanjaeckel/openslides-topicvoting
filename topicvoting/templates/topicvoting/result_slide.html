@@ -25,7 +25,7 @@
         </td>
     {% for hoechstzahl in category_hoechstzahl %}
         <td{% if hoechstzahl in winning_topics %} style="font-weight:bold"{% endif %}>
-            {{ hoechstzahl.topic.winner_output }}<br />{{ hoechstzahl.value|floatformat:2 }}
+            {{ hoechstzahl.topic.get_title_with_votes }}<br />{{ hoechstzahl.value|floatformat:2 }}
         </td>
     {% endfor %}
     </tr>

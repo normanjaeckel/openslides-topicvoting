@@ -9,7 +9,7 @@ from operator import attrgetter
 from .models import Category
 
 
-POSTS = 8  # How many topics should be elected? To do: Put this into a config variable later on.
+POSTS = 8  # How many topics should be elected? TODO: Put this into a config variable later on.
 
 
 class Hoechstzahl(object):
@@ -49,7 +49,7 @@ class Hoechstzahl(object):
             category_list = []
             category_hoechstzahls = filter(lambda hoechstzahl: hoechstzahl.topic.category == category, cls.all_hoechstzahls)
             category_hoechstzahls.sort(key=lambda hoechstzahl: hoechstzahl.value, reverse=True)
-            # To do: Use a map here?
+            # TODO: Use a map here?
             for hoechstzahl in category_hoechstzahls:
                 category_list.append(hoechstzahl)
             category_list += (POSTS - len(category_list)) * [None]

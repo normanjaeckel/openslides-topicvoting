@@ -10,10 +10,15 @@ from openslides.utils.views import ListView, CreateView, UpdateView, DeleteView
 from openslides.utils.template import Tab
 from openslides.projector.projector import Widget, SLIDE
 
+from . import BASE_URL
 from .models import Category, Topic
 
 
 class TopicvotingCategoryListView(ListView):
+    """
+    View to list all categories with all topics. The lost topics are also
+    included.
+    """
     model = Category
 
     def get_context_data(self, **kwargs):
@@ -22,47 +27,47 @@ class TopicvotingCategoryListView(ListView):
         return context
 
 
-uebergangsloesung = 'topic_voting_category_list'  # Großer Mist hier, das ist keine URL, sondern es wird unerwarteterweise nochmal umgewandelt.
-
-
 class TopicvotingCategoryCreateView(CreateView):
     model = Category
-    success_url = uebergangsloesung
-    apply_url = 'topic_voting_category_update'
+    success_url_name = 'topic_voting_category_list'
+    apply_url_name = 'topic_voting_category_update'  # TODO: Remove this when openslides/utils/views.py changed from 'edit' to 'update'.
 
 
 class TopicvotingCategoryUpdateView(UpdateView):
     model = Category
-    success_url = uebergangsloesung
+    success_url_name = 'topic_voting_category_list'
 
 
 class TopicvotingCategoryDeleteView(DeleteView):
     model = Category
-    url = uebergangsloesung  # redirect
+    success_url_name = 'topic_voting_category_list'  # TODO: Check this.
 
 
 class TopicvotingTopicCreateView(CreateView):
     model = Topic
-    success_url = uebergangsloesung
-    apply_url = 'topic_voting_topic_update'
+    success_url_name = 'topic_voting_category_list'
+    apply_url_name = 'topic_voting_topic_update'  # TODO: Remove this when openslides/utils/views.py changed from 'edit' to 'update'.
 
 
 class TopicvotingTopicUpdateView(UpdateView):
     model = Topic
-    success_url = uebergangsloesung
+    success_url_name = 'topic_voting_category_list'
 
 
 class TopicvotingTopicDeleteView(DeleteView):
     model = Topic
-    url = uebergangsloesung  # redirect
+    success_url_name = 'topic_voting_category_list'  # TODO: Check this.
 
 
 class TopicvotingResultView(TopicvotingCategoryListView):
-    template_name = 'topic_voting/results.html'
+    """
+    View to show the results in a nice table.
+    """
+    template_name = 'topicvoting/results.html'
 
     def get_context_data(self, **kwargs):
         context = super(TopicvotingResultView, self).get_context_data(**kwargs)
-        context['foobar'] = 'foobar'  # To do: Insert winner table here
+        context['foobar'] = 'foobar'  # TODO: Insert winner table here
         return context
 
 
@@ -73,7 +78,7 @@ def register_tab(request):
     return Tab(
         title='Themenwahl',
         url=reverse('topic_voting_category_list'),
-        selected=request.path.startswith('/topic-voting/'))
+        selected=request.path.startswith('/%s/' % BASE_URL))
 
 
 def get_widgets(request):
@@ -81,9 +86,9 @@ def get_widgets(request):
     Returns the widget.
     """
     return [Widget(
-        name='topic_voting',
+        name='topicvoting',
         display_name='Themenwahl',
-        template='topic_voting/category_widget.html',
+        template='topicvoting/category_widget.html',
         context={'overview_slide': SLIDE['topicvotingoverview'],
                  'result_slide': SLIDE['topicvotingresult'],
                  'category_list': Category.objects.all()},

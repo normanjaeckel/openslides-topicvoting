@@ -16,7 +16,7 @@ def overview_slide():
     """
     return {
         'title': 'Alle Kategorien',
-        'template': 'topic_voting/overview_slide.html',
+        'template': 'topicvoting/overview_slide.html',
         'category_list': Category.objects.all()}
 
 
@@ -36,7 +36,7 @@ def result_slide():
             break
     return {
         'title': 'Ergebnisse',
-        'template': 'topic_voting/result_slide.html',
+        'template': 'topicvoting/result_slide.html',
         'winners_table': Hoechstzahl.get_result_table(),
         'winning_topics': winning_topics,
         'divisors': map(lambda rank: rank * 2 + 1, range(POSTS)),
