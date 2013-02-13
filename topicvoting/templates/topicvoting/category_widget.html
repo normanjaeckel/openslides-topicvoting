@@ -1,0 +1,47 @@
+{% load i18n %}
+{% load tags %}
+
+<ul style="line-height: 180%">
+    <li class="{% if overview_slide.active %}activeline{% endif %}">
+        <a href="{% url 'projector_activate_slide' overview_slide.key %}" class="activate_link {% if overview_slide.active %}active{% endif %}">
+            <div></div>
+        </a>
+        <a href="{% url 'projctor_preview_slide' overview_slide.key %}" title="{% trans 'Preview' %}" class="icon preview right">
+            <span></span>
+        </a>
+        {{ overview_slide.name }}
+    </li>
+</ul>
+<ul style="line-height: 180%">
+    <li class="{% if result_slide.active %}activeline{% endif %}">
+        <a href="{% url 'projector_activate_slide' result_slide.key %}" class="activate_link {% if result_slide.active %}active{% endif %}">
+            <div></div>
+        </a>
+        <a href="{% url 'projctor_preview_slide' result_slide.key %}" title="{% trans 'Preview' %}" class="icon preview right">
+            <span></span>
+        </a>
+        {{ winners_slide.name }}
+    </li>
+</ul>
+<hr />
+<ul style="line-height: 180%">
+{% for category in category_list %}
+    <li class="{% if category.active %}activeline{% endif %}">
+        <a href="{% url 'projector_activate_slide' category.sid %}" class="activate_link {% if category.active %}active{% endif %}">
+            <div></div>
+        </a>
+        <a href="{% model_url category 'delete' %}" title="{% trans 'Delete' %}" class="icon delete right">
+            <span></span>
+        </a>
+        <a href="{% model_url category 'update' %}" title="{% trans 'Edit' %}" class="icon edit right">
+            <span></span>
+        </a>
+        <a href="{% url 'projctor_preview_slide' category.sid %}" title="{% trans 'Preview' %}" class="icon preview right">
+            <span></span>
+        </a>
+        {{ category }}
+    </li>
+{% empty %}
+    <li>{% trans 'No categories available.' %}</li>
+{% endfor %}
+</ul>

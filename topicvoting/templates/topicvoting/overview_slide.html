@@ -1,0 +1,18 @@
+{% extends 'base-projector.html' %}
+
+{% load i18n %}
+{% load tags %}
+
+{% block title %}{{ block.super }} – Kategorie{% endblock %}
+
+{% block content %}
+    <h1>Themenwahl</h1>
+{% endblock %}
+
+{% block scrollcontent %}
+    {% for category in category_list %}
+        <p>{{ category }} {% if category.get_sum_of_votes %}<strong>{{ category.get_sum_of_votes }} Stimmen</strong>{% endif %}</p>
+    {% empty %}
+        <p>Keine Kategorien vorhanden.</p>
+    {% endfor %}
+{% endblock %}

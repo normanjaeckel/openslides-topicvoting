@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>Wahlen der Themenabende für das Sommersemester 2013</h1>
+    <p style="font-size:1.3em">
+        Ihr habt 5 Stimmen. Ein Thema kann bis zu 5 Stimmen erhalten.
+        Schreibt die Zahl vor das jeweilige Thema.
+    </p>
+
+    <hr />
+    {% for category in category_list %}
+        {% if category.topic_set.all %}
+            <h2>{{ category }}</h2>
+            <ul style="list-style:none">
+            {% for topic in category.topic_set.all %}
+                <li style="margin:0.5em 0">____ {{ topic }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>

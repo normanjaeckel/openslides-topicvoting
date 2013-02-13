@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+{% load tags %}
+
+{% block title %}{{ block.super }} – Themenwahl{% endblock %}
+
+{% block submenu %}
+    <h4 class="sectiontitle">Themenwahl</h4>
+    <ul>
+        <li><a href="{% url 'topic_voting_category_create' %}">Neue Kategorie</a></li>
+        <li><a href="{% url 'topic_voting_topic_create' %}">Neues Thema</a></li>
+        <li><a href="{% url 'topic_voting_ballotpaper' %}">Wahlzettel</a></li>
+        <li><a href="{% url 'topic_voting_result' %{">Ergebnisse</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1>Themenwahl</h1>
+    {% for category in category_list %}
+        <h2>
+            {{ category }}{% if category.get_sum_of_votes %} – {{ category.get_sum_of_votes }} Stimmen{% endif %}
+            <a href="{% model_url category 'update' %}"><img src="{% static 'images/icons/edit.png' %}"/></a>
+            <a href="{% model_url category 'delete' %}"><img src="{% static 'images/icons/delete.png' %}"/></a>
+        </h2>
+        <ul>
+        {% for topic in category.topic_set.all %}
+            <li>
+                {% if topic.votes %}<strong>{{ topic.votes }} Stimmen: </strong>{% endif %}{{ topic }}
+                <a href="{% model_url topic 'update' %}"><img src="{% static 'images/icons/edit.png' %}"/></a>
+                <a href="{% model_url topic 'delete' %}"><img src="{% static 'images/icons/delete.png' %}"/></a>
+            </li>
+        {% empty %}
+            <li>Keine Themen zugeordnet</li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+    {% if lost_topics %}
+        <h2>Verlorene Themen</h2>
+        <ul>
+        {% for topic in lost_topics %}
+            <li>
+                {% if topic.votes %}<strong>{{ topic.votes }} Stimmen: </strong>{% endif %}{{ topic }}
+                <a href="{% model_url topic 'update' %}"><img src="{% static 'images/icons/edit.png' %}"/></a>
+                <a href="{% model_url topic 'delete' %}"><img src="{% static 'images/icons/delete.png' %}"/></a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

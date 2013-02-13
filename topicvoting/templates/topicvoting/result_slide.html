@@ -1,0 +1,37 @@
+{% extends 'base-projector.html' %}
+
+{% load i18n %}
+{% load tags %}
+
+{% block title %}{{ block.super }} – Mir doch egal{% endblock %}
+
+{% block content %}
+    <h1>Gewonnene Themen</h1>
+{% endblock %}
+
+{% block scrollcontent %}
+<table>
+    <tr>
+        <th>Teiler</th>
+        {% for divisor in divisors %}
+            <th>{{ divisor }}</th>
+        {% endfor %}
+    </tr>
+{% for category_hoechstzahl in result_table %}
+    <tr>
+        <td>
+            {{ category_hoechstzahl.0.topic.category }}
+            ({{ category_hoechstzahl.0.topic.category.sum_of_votes }})
+        </td>
+    {% for hoechstzahl in category_hoechstzahl %}
+        <td{% if hoechstzahl in winning_topics %} style="font-weight:bold"{% endif %}>
+            {{ hoechstzahl.topic.winner_output }}<br />{{ hoechstzahl.value|floatformat:2 }}
+        </td>
+    {% endfor %}
+    </tr>
+{% endfor %}
+</table>
+{% if topic_post_warning %}
+    <p><strong>Achtung: Es gibt weniger Themenvorschläge als zu wählende Themen.</strong></p>
+{% endif %}
+{% endblock %}
