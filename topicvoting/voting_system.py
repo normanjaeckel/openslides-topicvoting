@@ -26,7 +26,7 @@ class Hoechstzahl(object):
         else:
             self.__class__.all_hoechstzahls.append(self)
         divisor = rank * 2 + 1
-        self.value = float(category.get_sum_of_votes()) / divisor
+        self.value = float(category.sum_of_votes) / divisor
 
     @classmethod
     def get_results(cls):

@@ -10,7 +10,6 @@ from openslides.utils.views import ListView, CreateView, UpdateView, DeleteView
 from openslides.utils.template import Tab
 from openslides.projector.projector import Widget, SLIDE
 
-from . import BASE_URL
 from .models import Category, Topic
 
 
@@ -30,7 +29,7 @@ class TopicvotingCategoryListView(ListView):
 class TopicvotingCategoryCreateView(CreateView):
     model = Category
     success_url_name = 'topic_voting_category_list'
-    apply_url_name = 'topic_voting_category_update'  # TODO: Remove this when openslides/utils/views.py changed from 'edit' to 'update'.
+    apply_url_name = 'topic_voting_category_list'  # TODO: Remove this when openslides/utils/views.py changed from 'edit' to 'update'.
 
 
 class TopicvotingCategoryUpdateView(UpdateView):
@@ -46,7 +45,7 @@ class TopicvotingCategoryDeleteView(DeleteView):
 class TopicvotingTopicCreateView(CreateView):
     model = Topic
     success_url_name = 'topic_voting_category_list'
-    apply_url_name = 'topic_voting_topic_update'  # TODO: Remove this when openslides/utils/views.py changed from 'edit' to 'update'.
+    apply_url_name = 'topic_voting_category_list'  # TODO: Remove this when openslides/utils/views.py changed from 'edit' to 'update'.
 
 
 class TopicvotingTopicUpdateView(UpdateView):
@@ -75,6 +74,7 @@ def register_tab(request):
     """
     Registers the tab.
     """
+    from . import BASE_URL
     return Tab(
         title='Themenwahl',
         url=reverse('topic_voting_category_list'),

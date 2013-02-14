@@ -46,7 +46,7 @@ urlpatterns = patterns('',
 
     # Ballot paper
     url(r'^ballotpaper/$',
-        TopicvotingCategoryListView.as_view(template_name='topic_voting/ballotpaper.html'),
+        TopicvotingCategoryListView.as_view(template_name='topicvoting/ballotpaper.html'),
         name='topic_voting_ballotpaper'),
 
     # Voting results

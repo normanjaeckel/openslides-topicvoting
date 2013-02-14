@@ -9,7 +9,7 @@ VERSION = '1.0b2'
 RELEASE = False
 
 BASE_URL = 'topicvoting'
-URLPATTERS = urlpatters
+URLPATTERS = urlpatterns
 
 def get_version():
     if RELEASE:
