@@ -9,7 +9,7 @@ from .urls import urlpatterns
 NAME = 'openslides-topicvoting'
 VERSION = '1.4b1-dev'
 DESCRIPTION = 'Topic Voting Plugin for OpenSlides'
-BASE_URL = 'openslides-topicvoting'  # TODO: Rename to topicvoting
+BASE_URL = 'openslides_topicvoting'  # TODO: Rename to topicvoting when the functionality is implemented in OpenSlides
 URLPATTERS = urlpatterns
 
 

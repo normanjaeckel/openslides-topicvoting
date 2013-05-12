@@ -7,7 +7,13 @@
 {% block title %}Themenwahl – Kategorie – {{ block.super }}{% endblock %}
 
 {% block content %}
-    <h1>Kategorie</h1>
+    <h1>Kategorie
+        <small class="pull-right">
+        <div class="btn-toolbar">
+            <a href="{% url 'topicvoting_category_list' %}" class="btn btn-mini"><i class="icon-chevron-left"></i> {% trans "Back to overview" %}</a>
+        </div>
+        </small>
+    </h1>
     <form action="" method="post">{% csrf_token %}
         {% include 'form.html' %}
         <p>

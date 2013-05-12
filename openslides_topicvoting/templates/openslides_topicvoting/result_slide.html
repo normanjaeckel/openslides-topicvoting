@@ -18,6 +18,7 @@
         {% endfor %}
     </tr>
 {% for category_hoechstzahl in result_table %}
+    {% if category_hoechstzahl.0 %}
     <tr>
         <td>
             {{ category_hoechstzahl.0.topic.category }}
@@ -29,6 +30,7 @@
         </td>
     {% endfor %}
     </tr>
+    {% endif %}
 {% endfor %}
 </table>
 {% if topic_post_warning %}

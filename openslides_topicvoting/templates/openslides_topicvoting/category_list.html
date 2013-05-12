@@ -8,10 +8,12 @@
 {% block content %}
     <h1>Themenwahl
         <small class="pull-right">
+        <div class="btn-toolbar">
             <a href="{% url 'topicvoting_category_create' %}" class="btn btn-mini btn-primary" rel="tooltip" data-original-title="Neue Kategorie"><i class="icon-plus icon-white"></i> Neue Kategorie</a>
             <a href="{% url 'topicvoting_topic_create' %}" class="btn btn-mini btn-primary" rel="tooltip" data-original-title="Neues Thema"><i class="icon-plus icon-white"></i> Neues Thema</a>
             <a href="{% url 'topicvoting_ballotpaper' %}" class="btn btn-mini" rel="tooltip" data-original-title="Wahlzettel"><i class="icon-print"></i> Wahlzettel</a>
             <a href="{% url 'topicvoting_result' %}" class="btn btn-mini" rel="tooltip" data-original-title="Ergebnisse"><i class="icon-assignment"></i> Ergebnisse</a>
+        </div>
         </small>
     </h1>
     {% for category in category_list %}
