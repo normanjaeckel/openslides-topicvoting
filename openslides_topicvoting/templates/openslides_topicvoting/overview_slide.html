@@ -6,13 +6,13 @@
 {% block title %}{{ block.super }} – Kategorie{% endblock %}
 
 {% block content %}
-    <h1>Kategorie: {{ category }}</h1>
+    <h1>Themenwahl</h1>
 {% endblock %}
 
 {% block scrollcontent %}
-    {% for topic in category.topic_set.all %}
-        <p>{{ topic }} {% if topic.votes %}<strong>{{ topic.votes }} Stimmen</strong>{% endif %}</p>
+    {% for category in category_list %}
+        <p>{{ category }} {% if category.sum_of_votes %}<strong>{{ category.sum_of_votes }} Stimmen</strong>{% endif %}</p>
     {% empty %}
-        <p>Keine Themen vorhanden.</p>
+        <p>Keine Kategorien vorhanden.</p>
     {% endfor %}
 {% endblock %}

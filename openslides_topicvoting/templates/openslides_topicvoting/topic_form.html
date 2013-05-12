@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load tags %}
+
+{% block title %}Themenwahl – Thema – {{ block.super }}{% endblock %}
+
+{% block content %}
+    <h1>Thema</h1>
+    <form action="" method="post">{% csrf_token %}
+        {% include 'form.html' %}
+        <p>
+            {% include 'formbuttons_saveapply.html' %}
+            <a href="{% url 'topicvoting_category_list' %}" class="btn">
+                {% trans 'Cancel' %}
+            </a>
+        </p>
+        <small>* {% trans "required" %}</small>
+    </form>
+{% endblock %}

@@ -31,7 +31,7 @@ class Category(models.Model, SlideMixin):
 
     def __unicode__(self):
         """
-        Method for representation in Django.
+        Method for representation.
         """
         return self.name
 
@@ -41,28 +41,29 @@ class Category(models.Model, SlideMixin):
         Gets the url of the update view or the delete view of a category instance.
         """
         if link == 'update':
-            return ('topic_voting_category_update', [str(self.id)])
+            return ('topicvoting_category_update', [str(self.id)])
         if link == 'delete':
-            return ('topic_voting_category_delete', [str(self.id)])
+            return ('topicvoting_category_delete', [str(self.id)])
 
-    def _get_sum_of_votes(self):
-        _sum = 0
+    @property
+    def sum_of_votes(self):
+        """
+        Returns the sum of all votes of the topic of a category.
+        """
+        sum_of_votes = 0
         for topic in self.topic_set.all():
             if topic.votes:
-                _sum += topic.votes
-        return _sum
-
-    sum_of_votes = property(_get_sum_of_votes)
-    """Returns the sum of all votes of the topic of a category."""
+                sum_of_votes += topic.votes
+        return sum_of_votes
 
     def slide(self):
         """
-        Returns a map with the data for the model slides.
+        Returns a dictionary with the data for the model slides.
         """
         return {
             'category': self,
             'title': 'Kategorie',
-            'template': 'topicvoting/category_slide.html'}
+            'template': 'openslides_topicvoting/category_slide.html'}
 
 
 class Topic(models.Model):
@@ -79,7 +80,7 @@ class Topic(models.Model):
     category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
     """
     A foreign key to a category the topic belongs to. If it is None, the
-    topic is a ‘lost topic’. Deleting a category will become theit topics
+    topic is a ‘lost topic’. Deleting a category will become their topics
     lost.
     """
 
@@ -97,10 +98,13 @@ class Topic(models.Model):
 
     class Meta:
         ordering = ('title',)
+        permissions = (
+            # ('can_see', 'Can see categories and topics'),
+            ('can_manage', 'Can manage categories an topics'),)
 
     def __unicode__(self):
         """
-        Method for representation in Django.
+        Method for representation.
         """
         return '%s (Vorschlag von %s)' % (self.title, self.submitter)
 
@@ -110,9 +114,9 @@ class Topic(models.Model):
         Gets the url of the update view or the delete view of a topic instance.
         """
         if link == 'update':
-            return ('topic_voting_topic_update', [str(self.id)])
+            return ('topicvoting_topic_update', [str(self.id)])
         if link == 'delete':
-            return ('topic_voting_topic_delete', [str(self.id)])
+            return ('topicvoting_topic_delete', [str(self.id)])
 
     def get_title_with_votes(self):
         """
@@ -122,9 +126,3 @@ class Topic(models.Model):
             return '%s (%d)' % (self.title, self.votes)
         else:
             return self.title
-
-
-# TODO: Add permissions
-        #permissions = (
-        #    ('can_see', 'Can see categories an topics'),
-        #    ('can_manage', 'Can manage categories an topics'),)

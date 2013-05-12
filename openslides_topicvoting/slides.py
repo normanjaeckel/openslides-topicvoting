@@ -1,22 +1,23 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Slides for an overview of all categories and for the winners.
+Slides for an overview of all categories and for the results.
 """
 
+from openslides.config.api import config
 from openslides.projector.api import register_slidemodel, register_slidefunc
 
 from .models import Category
-from .voting_system import Hoechstzahl, feed_hoechstzahls, POSTS
+from .voting_system import Hoechstzahl, feed_hoechstzahls
 
 
 def overview_slide():
     """
-    Slide with all categories. Similar to ListView.
+    Slide with all categories. Similar to ListView. Lost topics are not shown.
     """
     return {
         'title': 'Alle Kategorien',
-        'template': 'topicvoting/overview_slide.html',
+        'template': 'openslides_topicvoting/overview_slide.html',
         'category_list': Category.objects.all()}
 
 
@@ -28,7 +29,7 @@ def result_slide():
     results_generator = Hoechstzahl.get_results()
     winning_topics = []
     topic_post_warning = False
-    for i in range(POSTS):
+    for i in range(config['openslides_topicvoting_posts']):
         try:
             winning_topics.append(results_generator.next())
         except StopIteration:
@@ -36,10 +37,10 @@ def result_slide():
             break
     return {
         'title': 'Ergebnisse',
-        'template': 'topicvoting/result_slide.html',
-        'winners_table': Hoechstzahl.get_result_table(),
+        'template': 'openslides_topicvoting/result_slide.html',
+        'result_table': Hoechstzahl.get_result_table(),
         'winning_topics': winning_topics,
-        'divisors': map(lambda rank: rank * 2 + 1, range(POSTS)),
+        'divisors': map(lambda rank: rank * 2 + 1, range(config['openslides_topicvoting_posts'])),
         'topic_post_warning': topic_post_warning}
 
 

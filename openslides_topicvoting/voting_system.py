@@ -6,10 +6,9 @@ Class and function for the voting system.
 
 from operator import attrgetter
 
+from openslides.config.api import config
+
 from .models import Category
-
-
-POSTS = 8  # How many topics should be elected? TODO: Put this into a config variable later on.
 
 
 class Hoechstzahl(object):
@@ -41,7 +40,7 @@ class Hoechstzahl(object):
     def get_result_table(cls):
         """
         Returns a nested list (table) with all hoechstzahls ordered by value.
-        It has only as many columns as there are POSTS.
+        It has only as many columns as there are posts.
         """
         result_table = []
         all_categories = sorted(Category.objects.all(), key=attrgetter('sum_of_votes', 'weight'), reverse=True)
@@ -52,7 +51,7 @@ class Hoechstzahl(object):
             # TODO: Use a map here?
             for hoechstzahl in category_hoechstzahls:
                 category_list.append(hoechstzahl)
-            category_list += (POSTS - len(category_list)) * [None]
+            category_list += (config['openslides_topicvoting_posts'] - len(category_list)) * [None]
             result_table.append(category_list)
         return result_table
 
@@ -61,5 +60,5 @@ def feed_hoechstzahls():
     # Clear existing hoechstzahls
     Hoechstzahl.all_hoechstzahls = []
     for category in Category.objects.all():
-        for rank in range(POSTS):
+        for rank in range(config['openslides_topicvoting_posts']):
             Hoechstzahl(category=category, rank=rank)

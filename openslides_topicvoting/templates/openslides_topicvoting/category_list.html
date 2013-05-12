@@ -3,20 +3,20 @@
 {% load staticfiles %}
 {% load tags %}
 
-{% block title %}{{ block.super }} – Themenwahl{% endblock %}
+{% block title %}Themenwahl – {{ block.super }}{% endblock %}
 
 {% block content %}
     <h1>Themenwahl
         <small class="pull-right">
-            <a href="{% url 'topic_voting_category_create' %}" class="btn btn-mini" rel="tooltip" data-original-title="Neue Kategorie"><i class="icon-plus"></i> Neue Kategorie</a>
-            <a href="{% url 'topic_voting_topic_create' %}" class="btn btn-mini" rel="tooltip" data-original-title="Neues Thema"><i class="icon-plus"></i> Neues Thema</a>
-            <a href="{% url 'topic_voting_ballotpaper' %}" class="btn btn-mini" rel="tooltip" data-original-title="Wahlzettel"><i class="icon-print"></i> Wahlzettel</a>
-            <a href="{% url 'topic_voting_result' %}" class="btn btn-mini" rel="tooltip" data-original-title="Ergebnisse"><i class="icon-assignment"></i> Ergebnisse</a>
+            <a href="{% url 'topicvoting_category_create' %}" class="btn btn-mini btn-primary" rel="tooltip" data-original-title="Neue Kategorie"><i class="icon-plus icon-white"></i> Neue Kategorie</a>
+            <a href="{% url 'topicvoting_topic_create' %}" class="btn btn-mini btn-primary" rel="tooltip" data-original-title="Neues Thema"><i class="icon-plus icon-white"></i> Neues Thema</a>
+            <a href="{% url 'topicvoting_ballotpaper' %}" class="btn btn-mini" rel="tooltip" data-original-title="Wahlzettel"><i class="icon-print"></i> Wahlzettel</a>
+            <a href="{% url 'topicvoting_result' %}" class="btn btn-mini" rel="tooltip" data-original-title="Ergebnisse"><i class="icon-assignment"></i> Ergebnisse</a>
         </small>
     </h1>
     {% for category in category_list %}
         <h2>
-            {{ category }}{% if category.get_sum_of_votes %} – {{ category.get_sum_of_votes }} Stimmen{% endif %}
+            {{ category }}{% if category.sum_of_votes %} – {{ category.sum_of_votes }} Stimmen{% endif %}
             <a href="{% model_url category 'update' %}" class="btn btn-mini" title="Bearbeiten"><i class="icon-pencil"></i></a>
             <a href="{% model_url category 'delete' %}" class="btn btn-mini" title="Löschen"><i class="icon-remove"></i></a>
         </h2>

@@ -1,1 +1,12 @@
+# Patterns to be ignored by git
+
+# Virtual environment for Python
+.venv/
+
+# Python compiled files
 *.pyc
+
+# Package building
+*.egg-info
+build/
+dist/

@@ -1,17 +1,32 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+Setup script for the Topic Voting Plugin for OpenSlides.
+"""
 
-from distutils.core import setup
+from setuptools import setup, find_packages
 
-from topicvoting import get_version()
+from openslides_topicvoting import NAME, VERSION, DESCRIPTION
 
-setup(name='openslides-topicvoting',
-      version=get_version(),
-      description='This is an OpenSlides (http://openslides.org) plugin. It features a structured voting on topics using the Sainte-Laguë method.',
-      author='See section ‘Authors’ in README.rst.',
-      license='BSD',
-      url='https://github.com/normanjaeckel/openslides-topicvoting',
-      packages=['topicvoting',],
-      package_data={'topicvoting': ['templates/topicvoting/*.html']},
-      #classifiers=['foo', 'bar'],
-      )
+
+with open('README.txt') as readme:
+    long_description = readme.read()
+
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description=DESCRIPTION,
+    long_description=long_description,
+    author='Team of Topic Voting Plugin for OpenSlides, see AUTHORS',
+    author_email='openslides-topicvoting@normanjaeckel.de',
+    url='https://github.com/normanjaeckel/openslides-topicvoting',
+    packages=find_packages(exclude=['tests']),
+    classifiers=[
+        'Environment :: Web Environment',
+        'Framework :: Django',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python :: 2'],
+    license='MIT',
+    install_requires='openslides==1.4')
