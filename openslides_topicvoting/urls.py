@@ -53,5 +53,4 @@ urlpatterns = patterns(
     # Voting result
     url(r'^result/$',
         TopicvotingResultView.as_view(),
-        name='topicvoting_result'),
-)
+        name='topicvoting_result'))
