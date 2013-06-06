@@ -6,14 +6,26 @@ Setup script for the Topic Voting Plugin for OpenSlides.
 
 from setuptools import setup, find_packages
 
-from openslides_topicvoting import NAME, VERSION, DESCRIPTION
+FILEDIR = os.path.dirname(__file__)
 
 
-with open('README.rst') as readme:
+with open(os.path.join(FILEDIR, 'openslides_topicvoting', 'NAME')) as metadata_file:
+    NAME = metadata_file.read().strip()
+
+
+with open(os.path.join(FILEDIR, 'openslides_topicvoting', 'VERSION')) as metadata_file:
+    VERSION = metadata_file.read().strip()
+
+
+with open(os.path.join(FILEDIR, 'openslides_topicvoting', 'DESCRIPTION')) as metadata_file:
+    DESCRIPTION = metadata_file.read().strip()
+
+
+with open(os.path.join(FILEDIR, 'README.rst')) as readme:
     long_description = readme.read()
 
 
-with open('requirements_production.txt') as requirements_production:
+with open(os.path.join(FILEDIR, 'requirements_production.txt')) as requirements_production:
     install_requires = requirements_production.readlines()
 
 
