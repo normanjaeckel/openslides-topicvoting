@@ -5,6 +5,7 @@ Model classes for categories and topics.
 """
 
 from django.db import models
+from django.utils.translation import ugettext as _, ugettext_noop
 
 from openslides.projector.projector import SlideMixin
 
@@ -62,7 +63,7 @@ class Category(models.Model, SlideMixin):
         """
         return {
             'category': self,
-            'title': 'Kategorie',
+            'title': _('Category'),
             'template': 'openslides_topicvoting/category_slide.html'}
 
 
@@ -99,14 +100,14 @@ class Topic(models.Model):
     class Meta:
         ordering = ('title',)
         permissions = (
-            # ('can_see', 'Can see categories and topics'),
-            ('can_manage', 'Can manage categories an topics'),)
+            # ('can_see', ugettext_noop('Can see topicvoting categories and topics')),
+            ('can_manage', ugettext_noop('Can manage topicvoting categories and topics')),)
 
     def __unicode__(self):
         """
         Method for representation.
         """
-        return '%s (Vorschlag von %s)' % (self.title, self.submitter)
+        return _('%(title)s (proposed by %(submitter)s)') % {'title': self.title, 'submitter': self.submitter}
 
     @models.permalink
     def get_absolute_url(self, link='update'):

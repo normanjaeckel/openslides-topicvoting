@@ -3,16 +3,16 @@
 {% load i18n %}
 {% load tags %}
 
-{% block title %}Kategorie – {{ block.super }}{% endblock %}
+{% block title %}{% trans 'Topicvoting' %} – {% trans 'Category' %} – {{ block.super }}{% endblock %}
 
 {% block content %}
-    <h1>Kategorie: {{ category }}</h1>
+    <h1>{% trans 'Category' %}: {{ category }}</h1>
 {% endblock %}
 
 {% block scrollcontent %}
     {% for topic in category.topic_set.all %}
-        <p>{{ topic }} {% if topic.votes %}<strong>{{ topic.votes }} Stimmen</strong>{% endif %}</p>
+        <p>{{ topic }} {% if topic.votes %}<strong>{{ topic.votes }} {% trans 'votes' %}</strong>{% endif %}</p>
     {% empty %}
-        <p>Keine Themen vorhanden.</p>
+        <p>{% trans 'No topics available.' %}</p>
     {% endfor %}
 {% endblock %}

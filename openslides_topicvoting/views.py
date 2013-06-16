@@ -5,6 +5,7 @@ Views for categories and topics
 """
 
 from django.core.urlresolvers import reverse
+from django.utils.translation import ugettext as _
 
 from openslides.config.api import config
 from openslides.utils.views import ListView, CreateView, UpdateView, DeleteView
@@ -102,7 +103,7 @@ def register_tab(request):
     """
     from . import BASE_URL
     return Tab(
-        title='Themenwahl',
+        title=_('Topicvoting'),
         app='openslides_topicvoting',
         stylefile='styles/openslides_topicvoting.css',
         url=reverse('topicvoting_category_list'),
@@ -116,7 +117,7 @@ def get_widgets(request):
     return [Widget(
         request,
         name='topicvoting',
-        display_name='Themenwahl',
+        display_name=_('Topicvoting'),
         template='openslides_topicvoting/category_widget.html',
         context={'overview_slide': SLIDE['topicvotingoverview'],
                  'result_slide': SLIDE['topicvotingresult'],

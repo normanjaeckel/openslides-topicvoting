@@ -6,6 +6,7 @@ Signals for config variables.
 
 from django import forms
 from django.dispatch import receiver
+from django.utils.translation import ugettext_lazy
 
 from openslides.config.api import ConfigVariable, ConfigPage
 from openslides.config.signals import config_signal
@@ -23,17 +24,16 @@ def setup_openslides_topicvoting_config(sender, **kwargs):
         name='openslides_topicvoting_posts',
         default_value=8,
         form_field=forms.IntegerField(
-            label='Anzahl der zu wählenden Themen',
+            label=ugettext_lazy('Number of topics to be elected'),
             min_value=1,
-            help_text='In der Ergebnistabelle wird die Anzahl der zu wählenden Themen '
-                      'von vorn beginnend als Gewinner hervorgehoben.'))
+            help_text=ugettext_lazy('The winning topics are highlighted in the result table.')))
 
     ballotpaper_title = ConfigVariable(
         name='openslides_topicvoting_ballotpaper_title',
         default_value='Wahlen der Themenabende',
         form_field=forms.CharField(
             required=False,
-            label='Titel des Wahlzettels'))
+            label=ugettext_lazy('Title of the ballot paper')))
 
     ballotpaper_text = ConfigVariable(
         name='openslides_topicvoting_ballotpaper_text',
@@ -42,9 +42,9 @@ def setup_openslides_topicvoting_config(sender, **kwargs):
         form_field=forms.CharField(
             widget=forms.Textarea(),
             required=False,
-            label='Erläuterung auf dem Wahlzettel'))
+            label=ugettext_lazy('Notice on the ballot paper')))
 
-    return ConfigPage(title='Themenwahl',
+    return ConfigPage(title=ugettext_lazy('Topicvoting'),
                       url='openslides_topicvoting',
                       required_permission='openslides_topicvoting.can_manage',
                       weight=130,

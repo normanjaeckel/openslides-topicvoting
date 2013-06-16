@@ -1,0 +1,174 @@
+# This is the openslides-topicvoting translation file.
+# Copyright (c) 2013 Authors of Topic Voting Plugin for OpenSlides, see AUTHORS
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# normanjaeckel <transifex16062013@normanjaeckel.de>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: openslides-topicvoting\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-16 19:04+0200\n"
+"PO-Revision-Date: 2013-06-16 17:06+0000\n"
+"Last-Translator: normanjaeckel <transifex16062013@normanjaeckel.de>\n"
+"Language-Team: German (http://www.transifex.com/projects/p/openslides-topicvoting/language/de/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: models.py:66 templates/openslides_topicvoting/category_form.html:7
+#: templates/openslides_topicvoting/category_form.html:10
+#: templates/openslides_topicvoting/category_slide.html:6
+#: templates/openslides_topicvoting/category_slide.html:9
+#: templates/openslides_topicvoting/overview_slide.html:6
+msgid "Category"
+msgstr "Kategorie"
+
+#: models.py:104
+msgid "Can manage topicvoting categories and topics"
+msgstr "Darf Kategorien und Themen verwalten (Themenwahl)"
+
+#: models.py:110
+#, python-format
+msgid "%(title)s (proposed by %(submitter)s)"
+msgstr "%(title)s (Vorschlag von %(submitter)s)"
+
+#: signals.py:27
+msgid "Number of topics to be elected"
+msgstr "Anzahl der zu wählenden Themen"
+
+#: signals.py:29
+msgid "The winning topics are highlighted in the result table."
+msgstr "Die erstplatzierten Themen sind in der Ergebnistabelle hervorgehoben."
+
+#: signals.py:36
+msgid "Title of the ballot paper"
+msgstr "Titel auf dem Wahlzettel"
+
+#: signals.py:45
+msgid "Notice on the ballot paper"
+msgstr "Erläuterungen auf dem Wahlzettel"
+
+#: signals.py:47 views.py:106 views.py:120
+#: templates/openslides_topicvoting/category_form.html:7
+#: templates/openslides_topicvoting/category_list.html:7
+#: templates/openslides_topicvoting/category_list.html:10
+#: templates/openslides_topicvoting/category_slide.html:6
+#: templates/openslides_topicvoting/overview_slide.html:6
+#: templates/openslides_topicvoting/overview_slide.html:9
+#: templates/openslides_topicvoting/result.html:7
+#: templates/openslides_topicvoting/result_slide.html:6
+#: templates/openslides_topicvoting/topic_form.html:7
+msgid "Topicvoting"
+msgstr "Themenwahl"
+
+#: slides.py:21 slides.py:50
+msgid "All categories"
+msgstr "Alle Kategorien"
+
+#: slides.py:41 slides.py:51
+#: templates/openslides_topicvoting/category_list.html:15
+#: templates/openslides_topicvoting/result.html:7
+#: templates/openslides_topicvoting/result.html:10
+#: templates/openslides_topicvoting/result.html:16
+#: templates/openslides_topicvoting/result_slide.html:6
+#: templates/openslides_topicvoting/result_slide.html:9
+msgid "Results"
+msgstr "Ergebnisse"
+
+#: templates/openslides_topicvoting/ballotpaper.html:8
+#: templates/openslides_topicvoting/category_list.html:14
+msgid "Ballot paper"
+msgstr "Wahlzettel"
+
+#: templates/openslides_topicvoting/category_form.html:12
+#: templates/openslides_topicvoting/result.html:12
+#: templates/openslides_topicvoting/topic_form.html:12
+msgid "Back to overview"
+msgstr "Zurück zur Übersicht"
+
+#: templates/openslides_topicvoting/category_form.html:20
+#: templates/openslides_topicvoting/topic_form.html:20
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: templates/openslides_topicvoting/category_form.html:23
+#: templates/openslides_topicvoting/topic_form.html:23
+msgid "required"
+msgstr "erforderlich"
+
+#: templates/openslides_topicvoting/category_list.html:12
+msgid "New Category"
+msgstr "Neue Kategorie"
+
+#: templates/openslides_topicvoting/category_list.html:13
+msgid "New Topic"
+msgstr "Neues Thema"
+
+#: templates/openslides_topicvoting/category_list.html:20
+#: templates/openslides_topicvoting/category_list.html:27
+#: templates/openslides_topicvoting/category_list.html:41
+#: templates/openslides_topicvoting/category_slide.html:14
+#: templates/openslides_topicvoting/overview_slide.html:14
+msgid "votes"
+msgstr "Stimmen"
+
+#: templates/openslides_topicvoting/category_list.html:21
+#: templates/openslides_topicvoting/category_list.html:28
+#: templates/openslides_topicvoting/category_list.html:42
+#: templates/openslides_topicvoting/category_widget.html:28
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: templates/openslides_topicvoting/category_list.html:22
+#: templates/openslides_topicvoting/category_list.html:29
+#: templates/openslides_topicvoting/category_list.html:43
+#: templates/openslides_topicvoting/category_widget.html:27
+msgid "Delete"
+msgstr "Löschen"
+
+#: templates/openslides_topicvoting/category_list.html:32
+#: templates/openslides_topicvoting/category_slide.html:16
+msgid "No topics available."
+msgstr "Keine Themen verfügbar."
+
+#: templates/openslides_topicvoting/category_list.html:37
+msgid "Lost topics"
+msgstr "Nicht zugeordnete Themen"
+
+#: templates/openslides_topicvoting/category_widget.html:6
+#: templates/openslides_topicvoting/category_widget.html:26
+msgid "Show"
+msgstr "Anzeigen"
+
+#: templates/openslides_topicvoting/category_widget.html:7
+#: templates/openslides_topicvoting/category_widget.html:16
+#: templates/openslides_topicvoting/category_widget.html:29
+msgid "Preview"
+msgstr "Vorschau"
+
+#: templates/openslides_topicvoting/category_widget.html:33
+#: templates/openslides_topicvoting/overview_slide.html:16
+msgid "No categories available."
+msgstr "Keine Kategorien verfügbar."
+
+#: templates/openslides_topicvoting/overview_slide.html:9
+msgid "Categories"
+msgstr "Kategorien"
+
+#: templates/openslides_topicvoting/result.html:18
+#: templates/openslides_topicvoting/result_slide.html:15
+msgid "Divisor"
+msgstr "Teiler"
+
+#: templates/openslides_topicvoting/result.html:40
+#: templates/openslides_topicvoting/result_slide.html:37
+msgid "Attention: There are less topics than posts."
+msgstr "Achtung: Es gibt weniger Themenvorschläge als Themen zu wählen sind."
+
+#: templates/openslides_topicvoting/topic_form.html:7
+#: templates/openslides_topicvoting/topic_form.html:10
+msgid "Topic"
+msgstr "Thema"

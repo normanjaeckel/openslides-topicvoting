@@ -4,6 +4,8 @@
 Slides for an overview of all categories and for the results.
 """
 
+from django.utils.translation import ugettext as _, ugettext_lazy
+
 from openslides.config.api import config
 from openslides.projector.api import register_slidemodel, register_slidefunc
 
@@ -16,7 +18,7 @@ def overview_slide():
     Slide with all categories. Similar to ListView. Lost topics are not shown.
     """
     return {
-        'title': 'Alle Kategorien',
+        'title': _('All categories'),
         'template': 'openslides_topicvoting/overview_slide.html',
         'category_list': Category.objects.all()}
 
@@ -36,7 +38,7 @@ def result_slide():
             topic_post_warning = True
             break
     return {
-        'title': 'Ergebnisse',
+        'title': _('Results'),
         'template': 'openslides_topicvoting/result_slide.html',
         'result_table': Hoechstzahl.get_result_table(),
         'winning_topics': winning_topics,
@@ -45,5 +47,5 @@ def result_slide():
 
 
 register_slidemodel(Category)
-register_slidefunc('topicvotingoverview', overview_slide, name='Alle Kategorien')
-register_slidefunc('topicvotingresult', result_slide, name='Ergebnisse')
+register_slidefunc('topicvotingoverview', overview_slide, name=ugettext_lazy('All categories'))
+register_slidefunc('topicvotingresult', result_slide, name=ugettext_lazy('Results'))

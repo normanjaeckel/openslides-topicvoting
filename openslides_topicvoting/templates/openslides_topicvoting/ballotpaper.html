@@ -1,10 +1,11 @@
+{% load i18n %}
 {% load tags %}
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Wahlzettel</title>
+    <title>{% trans 'Ballot paper' %}</title>
 </head>
 <body>
     <h1>{% get_config 'openslides_topicvoting_ballotpaper_title' %}</h1>

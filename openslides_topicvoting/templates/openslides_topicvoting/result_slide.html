@@ -3,16 +3,16 @@
 {% load i18n %}
 {% load tags %}
 
-{% block title %}Wahlergebnisse – {{ block.super }}{% endblock %}
+{% block title %}{% trans 'Topicvoting' %} – {% trans 'Results' %} – {{ block.super }}{% endblock %}
 
 {% block content %}
-    <h1>Wahlergebnisse</h1>
+    <h1>{% trans 'Results' %}</h1>
 {% endblock %}
 
 {% block scrollcontent %}
 <table>
     <tr>
-        <th>Teiler</th>
+        <th>{% trans 'Divisor' %}</th>
         {% for divisor in divisors %}
             <th>{{ divisor }}</th>
         {% endfor %}
@@ -34,6 +34,6 @@
 {% endfor %}
 </table>
 {% if topic_post_warning %}
-    <p><strong>Achtung: Es gibt weniger Themenvorschläge als zu wählende Themen.</strong></p>
+    <p><strong>{% trans 'Attention: There are less topics than posts.' %}</strong></p>
 {% endif %}
 {% endblock %}

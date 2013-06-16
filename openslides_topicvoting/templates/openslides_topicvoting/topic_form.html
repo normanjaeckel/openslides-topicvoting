@@ -4,14 +4,12 @@
 {% load staticfiles %}
 {% load tags %}
 
-{% block title %}Themenwahl – Thema – {{ block.super }}{% endblock %}
+{% block title %}{% trans 'Topicvoting' %} – {% trans 'Topic' %} – {{ block.super }}{% endblock %}
 
 {% block content %}
-    <h1>Thema
+    <h1>{% trans 'Topic' %}
         <small class="pull-right">
-        <div class="btn-toolbar">
             <a href="{% url 'topicvoting_category_list' %}" class="btn btn-mini"><i class="icon-chevron-left"></i> {% trans "Back to overview" %}</a>
-        </div>
         </small>
     </h1>
     <form action="" method="post">{% csrf_token %}

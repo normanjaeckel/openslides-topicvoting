@@ -4,21 +4,18 @@
 {% load staticfiles %}
 {% load tags %}
 
-{% block title %}Themenwahl – Ergebnisse – {{ block.super }}{% endblock %}
+{% block title %}{% trans 'Topicvoting' %} – {% trans 'Results' %} – {{ block.super }}{% endblock %}
 
 {% block content %}
-    <h1>
-        Wahlergebnisse
+    <h1>{% trans 'Results' %}
         <small class="pull-right">
-        <div class="btn-toolbar">
             <a href="{% url 'topicvoting_category_list' %}" class="btn btn-mini"><i class="icon-chevron-left"></i> {% trans "Back to overview" %}</a>
-        </div>
         </small>
     </h1>
     <table class="table table-striped table-bordered">
-        <caption class="hidden">Wahlergebnisse</caption>
+        <caption class="hidden">{% trans 'Results' %}</caption>
          <tr>
-            <th>Teiler</th>
+            <th>{% trans 'Divisor' %}</th>
             {% for divisor in divisors %}
                 <th>{{ divisor }}</th>
             {% endfor %}
@@ -40,7 +37,7 @@
     {% endfor %}
     </table>
     {% if topic_post_warning %}
-        <p><strong>Achtung: Es gibt weniger Themenvorschläge als zu wählende Themen.</strong></p>
+        <p><strong>{% trans 'Attention: There are less topics than posts.' %}</strong></p>
     {% endif %}
 {% endblock %}
 
