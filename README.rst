@@ -11,7 +11,7 @@ Sainte-Laguë method.
 Requirements
 ============
 
-OpenSlides 1.4b2 (http://openslides.org/)
+OpenSlides 1.4c1 (http://openslides.org/)
 
 
 Install
@@ -33,7 +33,7 @@ g. on Windows.
 
     $ source .venv/bin/activate
 
-    $ pip install http://files.openslides.org/Beta/openslides-1.4b2.tar.gz
+    $ pip install http://files.openslides.org/Beta/openslides-1.4c1.tar.gz
 
 3. Download and extract sources from GitHub. Install the Topic Voting
    Plugin for OpenSlides.

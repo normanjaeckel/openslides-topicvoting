@@ -14,7 +14,10 @@ from openslides.config.signals import config_signal
 @receiver(config_signal, dispatch_uid='setup_openslides_topicvoting_config')
 def setup_openslides_topicvoting_config(sender, **kwargs):
     """
-    Config variables: posts, ballotpaper_title, ballotpaper_text
+    Config variables:
+        * openslides_topicvoting_posts
+        * openslides_topicvoting_ballotpaper_title
+        * openslides_topicvoting_ballotpaper_text
     """
     posts = ConfigVariable(
         name='openslides_topicvoting_posts',

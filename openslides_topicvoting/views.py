@@ -114,6 +114,7 @@ def get_widgets(request):
     Returns the widget.
     """
     return [Widget(
+        request,
         name='topicvoting',
         display_name='Themenwahl',
         template='openslides_topicvoting/category_widget.html',
