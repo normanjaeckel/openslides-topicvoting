@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openslides-topicvoting\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-16 19:04+0200\n"
-"PO-Revision-Date: 2013-06-16 17:06+0000\n"
+"POT-Creation-Date: 2013-06-16 19:31+0200\n"
+"PO-Revision-Date: 2013-06-16 17:34+0000\n"
 "Last-Translator: normanjaeckel <transifex16062013@normanjaeckel.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/openslides-topicvoting/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -18,13 +18,34 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: models.py:66 templates/openslides_topicvoting/category_form.html:7
+#: models.py:18
+msgid "Name"
+msgstr "Name"
+
+#: models.py:21 models.py:94
+msgid "Weight (for runoff poll)"
+msgstr "Gewicht (für Stichwahl)"
+
+#: models.py:66 models.py:81
+#: templates/openslides_topicvoting/category_form.html:7
 #: templates/openslides_topicvoting/category_form.html:10
 #: templates/openslides_topicvoting/category_slide.html:6
 #: templates/openslides_topicvoting/category_slide.html:9
 #: templates/openslides_topicvoting/overview_slide.html:6
 msgid "Category"
 msgstr "Kategorie"
+
+#: models.py:75
+msgid "Title"
+msgstr "Titel"
+
+#: models.py:78
+msgid "Submitter"
+msgstr "Vorschlag von"
+
+#: models.py:88
+msgid "Votes"
+msgstr "Stimmen"
 
 #: models.py:104
 msgid "Can manage topicvoting categories and topics"

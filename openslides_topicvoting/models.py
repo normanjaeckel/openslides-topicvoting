@@ -5,7 +5,7 @@ Model classes for categories and topics.
 """
 
 from django.db import models
-from django.utils.translation import ugettext as _, ugettext_noop
+from django.utils.translation import ugettext as _, ugettext_lazy, ugettext_noop
 
 from openslides.projector.projector import SlideMixin
 
@@ -15,10 +15,10 @@ class Category(models.Model, SlideMixin):
     The model for categories of topics.
     """
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, verbose_name=ugettext_lazy('Name'))
     """A string, the name of the category of topics."""
 
-    weight = models.IntegerField(default=0)
+    weight = models.IntegerField(default=0, verbose_name=ugettext_lazy('Weight (for runoff poll)'))
     """
     An integer. A higher value prioritises the category in result view
     and slide. This can be used if there was a runoff poll.
@@ -72,26 +72,26 @@ class Topic(models.Model):
     The model for topics.
     """
 
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, verbose_name=ugettext_lazy('Title'))
     """A string, the name of the topic."""
 
-    submitter = models.CharField(max_length=255)  # TODO: Change this to a person field
+    submitter = models.CharField(max_length=255, verbose_name=ugettext_lazy('Submitter'))  # TODO: Change this to a person field
     """A string, the name of the submitter of the topic."""
 
-    category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL, verbose_name=ugettext_lazy('Category'))
     """
     A foreign key to a category the topic belongs to. If it is None, the
     topic is a ‘lost topic’. Deleting a category will become their topics
     lost.
     """
 
-    votes = models.IntegerField(null=True, blank=True)
+    votes = models.IntegerField(null=True, blank=True, verbose_name=ugettext_lazy('Votes'))
     """
     An integer, the votes for this topic. The OpenSlides poll system is
     not available yet.
     """
 
-    weight = models.IntegerField(default=0)
+    weight = models.IntegerField(default=0, verbose_name=ugettext_lazy('Weight (for runoff poll)'))
     """
     An integer. A higher value prioritises the topic in result view
     and slide. This can be used if there was a runoff poll.
