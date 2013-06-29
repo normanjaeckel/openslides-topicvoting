@@ -17,9 +17,9 @@ OpenSlides 1.4c1 (http://openslides.org/)
 Install
 =======
 
-This is only an example instruction for install on GNU/Linux. Topic Voting
-Plugin for OpenSlides can also be installed as any other python package, e.
-g. on Windows.
+This is only an example instruction for install Topic Voting Plugin for
+OpenSlides on GNU/Linux. It can also be installed as any other python
+package and on other platforms, e. g. on Windows.
 
 1. Change to a new directory.
 
