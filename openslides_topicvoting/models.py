@@ -16,7 +16,9 @@ class Category(models.Model, SlideMixin):
     """
 
     name = models.CharField(max_length=255, verbose_name=ugettext_lazy('Name'))
-    """A string, the name of the category of topics."""
+    """
+    A string, the name of the category of topics.
+    """
 
     weight = models.IntegerField(default=0, verbose_name=ugettext_lazy('Weight (for runoff poll)'))
     """
@@ -25,7 +27,9 @@ class Category(models.Model, SlideMixin):
     """
 
     prefix = 'topicvotingcategory'
-    """The prefix for the slides, hyphen and underscore are not allowed."""
+    """
+    The prefix for the slides, hyphen and underscore are not allowed.
+    """
 
     class Meta:
         ordering = ('name',)
@@ -49,13 +53,21 @@ class Category(models.Model, SlideMixin):
     @property
     def sum_of_votes(self):
         """
-        Returns the sum of all votes of the topic of a category.
+        Returns the sum of all votes of the topic of a category as integer.
         """
         sum_of_votes = 0
         for topic in self.topic_set.all():
             if topic.votes:
                 sum_of_votes += topic.votes
         return sum_of_votes
+
+    def get_votes_string(self):
+        """
+        Returns the sum of votes and, as ths case may be, the weight as string.
+        """
+        if self.weight:
+            return '%d / %d' % (self.sum_of_votes, self.weight)
+        return str(self.sum_of_votes)
 
     def slide(self):
         """
@@ -73,10 +85,14 @@ class Topic(models.Model):
     """
 
     title = models.CharField(max_length=255, verbose_name=ugettext_lazy('Title'))
-    """A string, the name of the topic."""
+    """
+    A string, the name of the topic.
+    """
 
-    submitter = models.CharField(max_length=255, verbose_name=ugettext_lazy('Submitter'))  # TODO: Change this to a person field
-    """A string, the name of the submitter of the topic."""
+    submitter = models.CharField(max_length=255, blank=True, verbose_name=ugettext_lazy('Submitter'))  # TODO: Change this to a person field
+    """
+    A string, the name of the submitter of the topic.
+    """
 
     category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL, verbose_name=ugettext_lazy('Category'))
     """
@@ -100,14 +116,17 @@ class Topic(models.Model):
     class Meta:
         ordering = ('title',)
         permissions = (
-            # ('can_see', ugettext_noop('Can see topicvoting categories and topics')),
+            ('can_see', ugettext_noop('Can see topicvoting categories and topics')),
             ('can_manage', ugettext_noop('Can manage topicvoting categories and topics')),)
 
     def __unicode__(self):
         """
         Method for representation.
         """
-        return _('%(title)s (proposed by %(submitter)s)') % {'title': self.title, 'submitter': self.submitter}
+        if self.submitter:
+            return _('%(title)s (proposed by %(submitter)s)') % {'title': self.title, 'submitter': self.submitter}
+        else:
+            return self.title
 
     @models.permalink
     def get_absolute_url(self, link='update'):
@@ -119,11 +138,18 @@ class Topic(models.Model):
         if link == 'delete':
             return ('topicvoting_topic_delete', [str(self.id)])
 
+    def get_votes_string(self):
+        """
+        Returns the votes and, as ths case may be, the weight as string.
+        """
+        if self.weight:
+            return '%d / %d' % (self.votes, self.weight)
+        return str(self.votes)
+
     def get_title_with_votes(self):
         """
         Gets the title and the votes if there are some.
         """
         if self.votes is not None:
-            return '%s (%d)' % (self.title, self.votes)
-        else:
-            return self.title
+            return '%s (%s)' % (self.title, self.get_votes_string())
+        return self.title

@@ -11,15 +11,16 @@ from fabric.api import local
 from fabric.contrib import django
 
 
-def start():
+def start(argument=None):
     """
     Starts OpenSlides installed in the python path.
-
-    At the moment passing additional args to OpenSlides is not possible.
     """
     sys.path.insert(0, '')
+    if argument is None:
+        sys.argv.remove('start')
+    else:
+        sys.argv[1] = argument
     from openslides.main import main
-    sys.argv.remove('start')
     main()
 
 

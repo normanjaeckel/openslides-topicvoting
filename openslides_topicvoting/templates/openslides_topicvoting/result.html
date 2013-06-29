@@ -20,24 +20,27 @@
                 <th>{{ divisor }}</th>
             {% endfor %}
         </tr>
-    {% for category_hoechstzahl in result_table %}
-        {% if category_hoechstzahl.0 %}
-        <tr>
-            <td>
-                {{ category_hoechstzahl.0.topic.category }}
-                ({{ category_hoechstzahl.0.topic.category.sum_of_votes }})
-            </td>
-        {% for hoechstzahl in category_hoechstzahl %}
-            <td{% if hoechstzahl in winning_topics %} style="font-weight:bold"{% endif %}>
-                {{ hoechstzahl.topic.get_title_with_votes }}<br />{{ hoechstzahl.value|floatformat:2 }}
-            </td>
-        {% endfor %}
-        </tr>
+    {% for row in result_table %}
+        {% if row.0.hoechstzahl %}
+            <tr>
+                <td>
+                    {{ row.0.hoechstzahl.topic.category }}
+                    ({{ row.0.hoechstzahl.topic.category.get_votes_string }})
+                </td>
+                {% for entry in row %}
+                    <td{% if entry.winner %} style="font-weight:bold"{% endif %}>
+                        {{ entry.hoechstzahl.topic.get_title_with_votes }}<br />{{ entry.hoechstzahl.value|floatformat:2 }}
+                    </td>
+                {% endfor %}
+            </tr>
         {% endif %}
     {% endfor %}
     </table>
     {% if topic_post_warning %}
-        <p><strong>{% trans 'Attention: There are less topics than posts.' %}</strong></p>
+        <p class="badge badge-warning">{% trans 'Attention: There are less topics than posts.' %}</p>
+    {% endif %}
+    {% if runoff_poll_warning %}
+        <p class="badge badge-warning">{% trans 'Attention: There is a runoff poll necessary.' %}</p>
     {% endif %}
 {% endblock %}
 

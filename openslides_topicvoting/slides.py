@@ -28,22 +28,13 @@ def result_slide():
     Slide for a table with all results. The winning topics are given too.
     """
     feed_hoechstzahls()
-    results_generator = Hoechstzahl.get_results()
-    winning_topics = []
-    topic_post_warning = False
-    for i in range(config['openslides_topicvoting_posts']):
-        try:
-            winning_topics.append(results_generator.next())
-        except StopIteration:
-            topic_post_warning = True
-            break
-    return {
-        'title': _('Results'),
-        'template': 'openslides_topicvoting/result_slide.html',
-        'result_table': Hoechstzahl.get_result_table(),
-        'winning_topics': winning_topics,
-        'divisors': map(lambda rank: rank * 2 + 1, range(config['openslides_topicvoting_posts'])),
-        'topic_post_warning': topic_post_warning}
+    result_table_and_info = Hoechstzahl.get_result_table_and_info()
+    return {'title': _('Results'),
+            'template': 'openslides_topicvoting/result_slide.html',
+            'result_table': result_table_and_info['result_table'],
+            'runoff_poll_warning': result_table_and_info['runoff_poll_warning'],
+            'topic_post_warning': result_table_and_info['topic_post_warning'],
+            'divisors': map(lambda rank: rank * 2 + 1, range(config['openslides_topicvoting_posts']))}
 
 
 register_slidemodel(Category)

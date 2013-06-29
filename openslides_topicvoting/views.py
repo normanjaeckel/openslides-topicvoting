@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Views for categories and topics
+Views for categories and topics.
 """
 
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
 
 from openslides.config.api import config
+from openslides.projector.projector import Widget, SLIDE
 from openslides.utils.views import ListView, CreateView, UpdateView, DeleteView
 from openslides.utils.template import Tab
-from openslides.projector.projector import Widget, SLIDE
 
 from .models import Category, Topic
 from .voting_system import Hoechstzahl, feed_hoechstzahls
@@ -18,14 +18,15 @@ from .voting_system import Hoechstzahl, feed_hoechstzahls
 
 class TopicvotingCategoryListView(ListView):
     """
-    View to list all categories with all topics. The lost topics are also
-    included.
+    View to list all categories and all topics.
     """
     model = Category
+    permission_required = 'openslides_topicvoting.can_see'
 
     def get_context_data(self, **kwargs):
         context = super(TopicvotingCategoryListView, self).get_context_data(**kwargs)
-        context['lost_topics'] = Topic.objects.filter(category=None)
+        context['topics'] = Topic.objects.all()
+        context['lost_topics'] = Topic.objects.filter(category=None).exists()
         return context
 
 
@@ -74,26 +75,19 @@ class TopicvotingResultView(TopicvotingCategoryListView):
     View to show the results in a nice table.
     """
     template_name = 'openslides_topicvoting/result.html'
+    permission_required = 'openslides_topicvoting.can_see'
 
     def get_context_data(self, **kwargs):
         """
-        Inserts the results table and additional variables into the context.
+        Inserts the results table and additional flags and variables into the context.
         """
         context = super(TopicvotingResultView, self).get_context_data(**kwargs)
         feed_hoechstzahls()
-        results_generator = Hoechstzahl.get_results()
-        winning_topics = []
-        topic_post_warning = False
-        for i in range(config['openslides_topicvoting_posts']):
-            try:
-                winning_topics.append(results_generator.next())
-            except StopIteration:
-                topic_post_warning = True
-                break
-        context['result_table'] = Hoechstzahl.get_result_table()
-        context['winning_topics'] = winning_topics
+        result_table_and_info = Hoechstzahl.get_result_table_and_info()
+        context['result_table'] = result_table_and_info['result_table']
+        context['runoff_poll_warning'] = result_table_and_info['runoff_poll_warning']
+        context['topic_post_warning'] = result_table_and_info['topic_post_warning']
         context['divisors'] = map(lambda rank: rank * 2 + 1, range(config['openslides_topicvoting_posts']))
-        context['topic_post_warning'] = topic_post_warning
         return context
 
 
@@ -107,6 +101,7 @@ def register_tab(request):
         app='openslides_topicvoting',
         stylefile='styles/openslides_topicvoting.css',
         url=reverse('topicvoting_category_list'),
+        permission=request.user.has_perm('openslides_topicvoting.can_see'),
         selected=request.path.startswith('/%s/' % BASE_URL))
 
 

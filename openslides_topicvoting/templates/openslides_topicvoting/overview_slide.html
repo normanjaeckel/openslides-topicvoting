@@ -11,7 +11,7 @@
 
 {% block scrollcontent %}
     {% for category in category_list %}
-        <p>{{ category }} {% if category.sum_of_votes %}<strong>{{ category.sum_of_votes }} {% trans 'votes' %}</strong>{% endif %}</p>
+        <p>{{ category }} {% if category.sum_of_votes %}<strong>{{ category.get_votes_string }} {% trans 'votes' %}</strong>{% endif %}</p>
     {% empty %}
         <p>{% trans 'No categories available.' %}</p>
     {% endfor %}

@@ -11,8 +11,8 @@
 
 {% block scrollcontent %}
     {% for topic in category.topic_set.all %}
-        <p>{{ topic }} {% if topic.votes %}<strong>{{ topic.votes }} {% trans 'votes' %}</strong>{% endif %}</p>
+        <p>{{ topic }} {% if topic.votes %}<strong>{{ topic.get_votes_string }} {% trans 'votes' %}</strong>{% endif %}</p>
     {% empty %}
-        <p>{% trans 'No topics available.' %}</p>
+        <p><i>{% trans 'No topics available.' %}</i></p>
     {% endfor %}
 {% endblock %}

@@ -20,10 +20,12 @@ from .views import (
 urlpatterns = patterns(
     '',
 
-    # Category
+    # Categories and Topics
     url(r'^$',
         TopicvotingCategoryListView.as_view(),
         name='topicvoting_category_list',),
+
+    # Category
     url(r'^category/create/$',
         TopicvotingCategoryCreateView.as_view(),
         name='topicvoting_category_create',),
