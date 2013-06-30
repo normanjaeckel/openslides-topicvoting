@@ -5,7 +5,7 @@ import inspect
 
 
 NAME = 'openslides-topicvoting'
-VERSION = '1.0b1'
+VERSION = '1.0c1-dev'
 DESCRIPTION = 'Topic Voting Plugin for OpenSlides'
 BASE_URL = 'openslides_topicvoting'  # TODO: Rename to topicvoting when the functionality is implemented in OpenSlides
 
