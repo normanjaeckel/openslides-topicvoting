@@ -2,7 +2,7 @@
  Topic Voting Plugin for OpenSlides
 ====================================
 
-Version 1.0b1 (unreleased)
+Version 1.0b1 (2013-06-30)
 
 This plugin features a structured voting on topics using the
 Sainte-Laguë method.
