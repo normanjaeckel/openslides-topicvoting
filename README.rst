@@ -4,7 +4,10 @@
 
 Version 1.0c1 (unreleased)
 
-This plugin features a structured voting on topics using the
+Overview
+========
+
+This plugin for OpenSlides features a structured voting on topics using the
 Sainte-Laguë method.
 
 
@@ -21,13 +24,13 @@ This is only an example instruction for install Topic Voting Plugin for
 OpenSlides on GNU/Linux. It can also be installed as any other python
 package and on other platforms, e. g. on Windows.
 
-1. Change to a new directory.
+Change to a new directory::
 
     $ mkdir OpenSlides
 
     $ cd OpenSlides
 
-2. Setup and activate a virtual environment and install OpenSlides in it.
+Setup and activate a virtual environment and install OpenSlides in it::
 
     $ virtualenv .venv
 
@@ -35,35 +38,41 @@ package and on other platforms, e. g. on Windows.
 
     $ pip install http://files.openslides.org/Beta/openslides-1.4c1.tar.gz
 
-3. Download and extract sources from GitHub. Install the Topic Voting
-   Plugin for OpenSlides.
+Download and extract sources from GitHub. Install the Topic Voting Plugin
+for OpenSlides::
 
     $ wget https://github.com/normanjaeckel/openslides-topicvoting/archive/1.0c1.zip
 
     $ unzip 1.0c1.zip
 
-    $ pip install openslides-topicvoting-1.0c1
+    $ pip install openslides-topicvoting-1.0c1/
 
-4. Start OpenSlides once to create its settings file if it does not exist yet.
+Instead of the last steps you can also just use the Python Package Index (PyPI)::
+
+    $ pip install openslides-topicvoting==1.0c1
+
+Start OpenSlides once to create its settings file if it does not exist yet::
 
     $ openslides
 
-5. Stop OpenSlides.
+Stop OpenSlides::
 
-6. Edit the settings.py file. You can find it in the directory openslides
-   in your user config path given in the environment variable
-   $XDG_CONFIG_HOME. Default is ``~/.config/openslides`` on GNU/Linux (and
-   ``$HOME\AppData\Local\openslides`` on Windows). Insert the line
-   'openslides_csv_export' into the INSTALLED_PLUGINS tuple.
+    CTRL + C
 
-     INSTALLED_PLUGINS = (
-         'openslides_topicvoting',
-     )
+Edit the settings.py file. You can find it in the directory openslides in
+your user config path given in the environment variable $XDG_CONFIG_HOME.
+Default is ``~/.config/openslides`` on GNU/Linux (and
+``$HOME\AppData\Local\openslides`` on Windows). Insert the line
+'openslides_csv_export' into the INSTALLED_PLUGINS tuple::
 
-7. Synchronize the database to add the new tables:
+    INSTALLED_PLUGINS = (
+        'openslides_topicvoting',
+    )
+
+Synchronize the database to add the new tables::
 
     $ openslides --syncdb
 
-8. Restart OpenSlides.
+Restart OpenSlides::
 
     $ openslides
