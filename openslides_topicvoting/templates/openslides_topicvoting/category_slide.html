@@ -3,10 +3,10 @@
 {% load i18n %}
 {% load tags %}
 
-{% block title %}{% trans 'Topicvoting' %} – {% trans 'Category' %} – {{ block.super }}{% endblock %}
+{% block title %}{% trans 'Topicvoting' %} – {% trans 'Category' context 'topicvoting' %} – {{ block.super }}{% endblock %}
 
 {% block content %}
-    <h1>{% trans 'Category' %}: {{ category }}</h1>
+    <h1>{% trans 'Category' context 'topicvoting' %}: {{ category }}</h1>
 {% endblock %}
 
 {% block scrollcontent %}

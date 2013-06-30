@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-30 18:01+0200\n"
+"POT-Creation-Date: 2013-06-30 18:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -28,6 +28,7 @@ msgstr ""
 #: templates/openslides_topicvoting/category_slide.html:6
 #: templates/openslides_topicvoting/category_slide.html:9
 #: templates/openslides_topicvoting/overview_slide.html:6
+msgctxt "topicvoting"
 msgid "Category"
 msgstr ""
 
@@ -86,6 +87,7 @@ msgid "Topicvoting"
 msgstr ""
 
 #: slides.py:21 slides.py:41
+msgctxt "topicvoting"
 msgid "All categories"
 msgstr ""
 
@@ -125,6 +127,7 @@ msgid "New"
 msgstr ""
 
 #: templates/openslides_topicvoting/category_list.html:35
+msgctxt "topicvoting"
 msgid "New Category"
 msgstr ""
 
@@ -174,12 +177,14 @@ msgstr ""
 #: templates/openslides_topicvoting/category_list.html:82
 #: templates/openslides_topicvoting/category_list.html:84
 #: templates/openslides_topicvoting/overview_slide.html:9
+msgctxt "topicvoting"
 msgid "Categories"
 msgstr ""
 
 #: templates/openslides_topicvoting/category_list.html:114
 #: templates/openslides_topicvoting/category_widget.html:33
 #: templates/openslides_topicvoting/overview_slide.html:16
+msgctxt "topicvoting"
 msgid "No categories available."
 msgstr ""
 

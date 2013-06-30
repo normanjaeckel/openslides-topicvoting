@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openslides-topicvoting\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-30 18:01+0200\n"
-"PO-Revision-Date: 2013-06-30 16:08+0000\n"
+"POT-Creation-Date: 2013-06-30 18:52+0200\n"
+"PO-Revision-Date: 2013-06-30 16:56+0000\n"
 "Last-Translator: normanjaeckel <transifex16062013@normanjaeckel.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/openslides-topicvoting/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -34,6 +34,7 @@ msgstr "Gewicht (für Stichwahl)"
 #: templates/openslides_topicvoting/category_slide.html:6
 #: templates/openslides_topicvoting/category_slide.html:9
 #: templates/openslides_topicvoting/overview_slide.html:6
+msgctxt "topicvoting"
 msgid "Category"
 msgstr "Kategorie"
 
@@ -92,6 +93,7 @@ msgid "Topicvoting"
 msgstr "Themenwahl"
 
 #: slides.py:21 slides.py:41
+msgctxt "topicvoting"
 msgid "All categories"
 msgstr "Alle Kategorien"
 
@@ -131,6 +133,7 @@ msgid "New"
 msgstr "Neu"
 
 #: templates/openslides_topicvoting/category_list.html:35
+msgctxt "topicvoting"
 msgid "New Category"
 msgstr "Neue Kategorie"
 
@@ -180,12 +183,14 @@ msgstr "Löschen"
 #: templates/openslides_topicvoting/category_list.html:82
 #: templates/openslides_topicvoting/category_list.html:84
 #: templates/openslides_topicvoting/overview_slide.html:9
+msgctxt "topicvoting"
 msgid "Categories"
 msgstr "Kategorien"
 
 #: templates/openslides_topicvoting/category_list.html:114
 #: templates/openslides_topicvoting/category_widget.html:33
 #: templates/openslides_topicvoting/overview_slide.html:16
+msgctxt "topicvoting"
 msgid "No categories available."
 msgstr "Keine Kategorien verfügbar."
 

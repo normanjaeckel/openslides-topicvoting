@@ -4,12 +4,12 @@
 {% load staticfiles %}
 {% load tags %}
 
-{% block title %}{% trans 'Topicvoting' %} – {% trans 'Category' %} – {{ block.super }}{% endblock %}
+{% block title %}{% trans 'Topicvoting' %} – {% trans 'Category' context 'topicvoting' %} – {{ block.super }}{% endblock %}
 
 {% block content %}
-    <h1>{% trans 'Category' %}
+    <h1>{% trans 'Category' context 'topicvoting' %}
         <small class="pull-right">
-            <a href="{% url 'topicvoting_category_list' %}" class="btn btn-mini"><i class="icon-chevron-left"></i> {% trans "Back to overview" %}</a>
+            <a href="{% url 'topicvoting_category_list' %}" class="btn btn-mini"><i class="icon-chevron-left"></i> {% trans 'Back to overview' %}</a>
         </small>
     </h1>
     <form action="" method="post">{% csrf_token %}
@@ -20,6 +20,6 @@
                 {% trans 'Cancel' %}
             </a>
         </p>
-        <small>* {% trans "required" %}</small>
+        <small>* {% trans 'required' %}</small>
     </form>
 {% endblock %}

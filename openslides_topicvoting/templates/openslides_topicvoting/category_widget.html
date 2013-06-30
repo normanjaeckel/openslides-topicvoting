@@ -30,6 +30,6 @@
         {{ category }}
     </li>
 {% empty %}
-    <li>{% trans 'No categories available.' %}</li>
+    <li>{% trans 'No categories available.' context 'topicvoting' %}</li>
 {% endfor %}
 </ul>

@@ -9,7 +9,7 @@
 {% block content %}
     <h1>{% trans 'Topic' %}
         <small class="pull-right">
-            <a href="{% url 'topicvoting_category_list' %}" class="btn btn-mini"><i class="icon-chevron-left"></i> {% trans "Back to overview" %}</a>
+            <a href="{% url 'topicvoting_category_list' %}" class="btn btn-mini"><i class="icon-chevron-left"></i> {% trans 'Back to overview' %}</a>
         </small>
     </h1>
     <form action="" method="post">{% csrf_token %}
@@ -20,6 +20,6 @@
                 {% trans 'Cancel' %}
             </a>
         </p>
-        <small>* {% trans "required" %}</small>
+        <small>* {% trans 'required' %}</small>
     </form>
 {% endblock %}

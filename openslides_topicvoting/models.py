@@ -5,7 +5,7 @@ Model classes for categories and topics.
 """
 
 from django.db import models
-from django.utils.translation import ugettext as _, ugettext_lazy, ugettext_noop
+from django.utils.translation import ugettext as _, ugettext_lazy, ugettext_noop, pgettext, pgettext_lazy
 
 from openslides.projector.projector import SlideMixin
 
@@ -75,7 +75,7 @@ class Category(models.Model, SlideMixin):
         """
         return {
             'category': self,
-            'title': _('Category'),
+            'title': pgettext('topicvoting', 'Category'),
             'template': 'openslides_topicvoting/category_slide.html'}
 
 
@@ -94,7 +94,7 @@ class Topic(models.Model):
     A string, the name of the submitter of the topic.
     """
 
-    category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL, verbose_name=ugettext_lazy('Category'))
+    category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL, verbose_name=pgettext_lazy('topicvoting', 'Category'))
     """
     A foreign key to a category the topic belongs to. If it is None, the
     topic is a ‘lost topic’. Deleting a category will become their topics
