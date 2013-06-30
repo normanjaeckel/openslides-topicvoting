@@ -2,7 +2,7 @@
  Topic Voting Plugin for OpenSlides
 ====================================
 
-Version 1.0b1 (unreleased)
+Version 1.0c1 (unreleased)
 
 This plugin features a structured voting on topics using the
 Sainte-Laguë method.
@@ -38,11 +38,11 @@ package and on other platforms, e. g. on Windows.
 3. Download and extract sources from GitHub. Install the Topic Voting
    Plugin for OpenSlides.
 
-    $ wget https://github.com/normanjaeckel/openslides-topicvoting/archive/1.0b1.zip
+    $ wget https://github.com/normanjaeckel/openslides-topicvoting/archive/1.0c1.zip
 
-    $ unzip 1.0b1.zip
+    $ unzip 1.0c1.zip
 
-    $ pip install openslides-topicvoting-1.0b1
+    $ pip install openslides-topicvoting-1.0c1
 
 4. Start OpenSlides once to create its settings file if it does not exist yet.
 
