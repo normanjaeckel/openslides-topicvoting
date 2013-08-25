@@ -2,7 +2,7 @@
  Topic Voting Plugin for OpenSlides
 ====================================
 
-Version 1.0c1 (unreleased)
+Version 1.0 (unreleased)
 
 Overview
 ========
@@ -37,7 +37,7 @@ Voting Plugin for OpenSlides in it::
 
     $ source .virtualenv/bin/activate
 
-    $ pip install openslides-topicvoting==1.0c1
+    $ pip install openslides-topicvoting==1.0
 
 Start OpenSlides once to create its settings file if it does not exist yet::
 
