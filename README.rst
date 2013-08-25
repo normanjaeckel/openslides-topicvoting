@@ -33,9 +33,9 @@ Change to a new directory::
 Setup and activate a virtual environment and install OpenSlides and Topic
 Voting Plugin for OpenSlides in it::
 
-    $ virtualenv .venv
+    $ virtualenv .virtualenv
 
-    $ source .venv/bin/activate
+    $ source .virtualenv/bin/activate
 
     $ pip install openslides-topicvoting==1.0c1
 

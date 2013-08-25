@@ -79,6 +79,7 @@ class Hoechstzahl(object):
                 # Second runoff poll check: Check equal votes inside a category.
                 if (category_list and
                         not winner and
+                        category_list[-1]['winner'] and
                         hoechstzahl.topic.votes == category_list[-1]['hoechstzahl'].topic.votes and
                         hoechstzahl.topic.weight == category_list[-1]['hoechstzahl'].topic.weight):
                     runoff_poll_warning = True
