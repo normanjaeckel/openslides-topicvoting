@@ -14,7 +14,7 @@ Sainte-Laguë method.
 Requirements
 ============
 
-OpenSlides 1.4c1 (http://openslides.org/)
+OpenSlides 1.4.1 (http://openslides.org/)
 
 
 Install
@@ -30,24 +30,12 @@ Change to a new directory::
 
     $ cd OpenSlides
 
-Setup and activate a virtual environment and install OpenSlides in it::
+Setup and activate a virtual environment and install OpenSlides and Topic
+Voting Plugin for OpenSlides in it::
 
-    $ virtualenv .venv
+    $ virtualenv .virtualenv
 
-    $ source .venv/bin/activate
-
-    $ pip install http://files.openslides.org/Beta/openslides-1.4c1.tar.gz
-
-Download and extract sources from GitHub. Install the Topic Voting Plugin
-for OpenSlides::
-
-    $ wget https://github.com/normanjaeckel/openslides-topicvoting/archive/1.0c1.zip
-
-    $ unzip 1.0c1.zip
-
-    $ pip install openslides-topicvoting-1.0c1/
-
-Instead of the last steps you can also just use the Python Package Index (PyPI)::
+    $ source .virtualenv/bin/activate
 
     $ pip install openslides-topicvoting==1.0c1
 
