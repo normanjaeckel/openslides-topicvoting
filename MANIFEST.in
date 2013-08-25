@@ -4,5 +4,3 @@ include README.rst
 include requirements_production.txt
 recursive-include openslides_topicvoting *.*
 recursive-exclude openslides_topicvoting *.pyc
-recursive-exclude openslides_topicvoting *.swp
-recursive-exclude openslides_topicvoting *~
