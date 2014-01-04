@@ -14,7 +14,7 @@ Sainte-Laguë method.
 Requirements
 ============
 
-OpenSlides 1.4.1 (http://openslides.org/)
+OpenSlides 1.4.x (http://openslides.org/)
 
 
 Install
@@ -51,7 +51,7 @@ Edit the settings.py file. You can find it in the directory openslides in
 your user config path given in the environment variable $XDG_CONFIG_HOME.
 Default is ``~/.config/openslides`` on GNU/Linux (and
 ``$HOME\AppData\Local\openslides`` on Windows). Insert the line
-'openslides_csv_export' into the INSTALLED_PLUGINS tuple::
+'openslides_topicvoting' into the INSTALLED_PLUGINS tuple::
 
     INSTALLED_PLUGINS = (
         'openslides_topicvoting',
