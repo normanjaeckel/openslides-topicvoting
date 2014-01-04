@@ -1,27 +1,16 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import inspect
+from inspect import stack
 
+for frame in stack():
+    lines = frame[4]
+    if lines and 'phiejav6meQuoh2ohweioShielaecae1ohngooph' in lines[0]:
+        break
+else:
+    from . import signals  # noqa
+    from . import slides  # noqa
+    from .urls import urlpatterns  # noqa
 
-NAME = 'openslides-topicvoting'
-VERSION = '1.1a1-dev'
-DESCRIPTION = 'Topic Voting Plugin for OpenSlides'
-BASE_URL = 'openslides_topicvoting'  # TODO: Rename to topicvoting when the functionality is implemented in OpenSlides
-
-
-if not inspect.stack()[1][4][0] == ('from openslides_topicvoting import NAME, VERSION, DESCRIPTION  '
-                                    '# Ohf9du1Kae8aiVayu3ahSaiZei0PhugiSu1eiMai\n'):
-    # Don't import signals, slides and urlpatters if the import of this module
-    # came from the setup.py for then the settings are not present.
-    from . import signals
-    from . import slides
-    from .urls import urlpatterns
-    URLPATTERS = urlpatterns
-
-
-def get_name():
-    """
-    Function for OpenSlides' version page.
-    """
-    return '%s (%s)' % (DESCRIPTION, NAME)
+__verbose_name__ = 'OpenSlides Topic Voting Plugin'
+__description__ = 'This plugin for OpenSlides features a structured voting on topics using the Sainte-Laguë method.'
+__version__ = '1.1.0a1-dev'

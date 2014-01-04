@@ -1,32 +1,30 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
-Setup script for the Topic Voting Plugin for OpenSlides.
-"""
 
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
-# The following commented unique number is used for detecting this import.
-from openslides_topicvoting import NAME, VERSION, DESCRIPTION  # Ohf9du1Kae8aiVayu3ahSaiZei0PhugiSu1eiMai
+module_name = 'openslides_topicvoting'
 
+# The following commented unique string is used to detect this import.
+module = __import__(module_name)  # phiejav6meQuoh2ohweioShielaecae1ohngooph
 
 with open('README.rst') as readme:
     long_description = readme.read()
 
-
 with open('requirements_production.txt') as requirements_production:
     install_requires = requirements_production.readlines()
 
-
 setup(
-    name=NAME,
-    version=VERSION,
-    description=DESCRIPTION,
+    name='openslides-topicvoting',
+    version=module.__version__,
+    description=module.__verbose_name__,
     long_description=long_description,
-    author='Team of Topic Voting Plugin for OpenSlides, see AUTHORS',
+    author='Authors of %s, see AUTHORS' % module.__verbose_name__,
     author_email='openslides-topicvoting@normanjaeckel.de',
-    url='https://github.com/normanjaeckel/openslides-topicvoting',
+    url='https://github.com/normanjaeckel/openslides-topicvoting/',
+    keywords='OpenSlides',
     classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        'Environment :: Plugins',
         'Environment :: Web Environment',
         'Framework :: Django',
         'License :: OSI Approved :: MIT License',
@@ -35,4 +33,5 @@ setup(
     license='MIT',
     packages=find_packages(exclude=['tests']),
     include_package_data=True,
-    install_requires=install_requires)
+    install_requires=install_requires,
+    entry_points={'openslides_plugins': '%s = %s' % (module.__verbose_name__, module_name)})

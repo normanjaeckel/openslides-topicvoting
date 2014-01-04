@@ -1,1 +1,2 @@
-openslides>=1.4.1,<1.5
+# Requirements for production
+openslides>=1.6a1,<1.7

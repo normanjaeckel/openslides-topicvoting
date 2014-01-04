@@ -4,4 +4,7 @@ python:
   - "2.7"
 install:
   - "pip install -r requirements.txt --use-mirrors"
-script: "fab travis_ci"
+script:
+  - "DJANGO_SETTINGS_MODULE=tests.settings openslides django test"
+  - "flake8 --max-line-length=150 --statistics openslides_topicvoting"
+  - "flake8 --max-line-length=150 --statistics tests"

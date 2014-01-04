@@ -1,7 +1,5 @@
-# Requirements for the plugin in production
+# Requirements for production
 -r requirements_production.txt
 
-# Requirements for development and tests
-django-discover-runner==1.0
-Fabric==1.7.0
-pep8==1.4.6
+# Requirements for development and tests in alphabetical order
+flake8==2.1.0
