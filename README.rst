@@ -2,7 +2,7 @@
  Topic Voting Plugin for OpenSlides
 ====================================
 
-Version 1.0 (2014-01-04)
+Version 1.1 (unreleased)
 
 Overview
 ========
