@@ -1,18 +1,23 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Model classes for categories and topics.
 """
 
+from django.core.urlresolvers import reverse
 from django.db import models
-from django.utils.translation import ugettext as _, ugettext_lazy, ugettext_noop, pgettext, pgettext_lazy
+from django.utils.translation import ugettext as _
+from django.utils.translation import pgettext_lazy, ugettext_lazy, ugettext_noop
+from openslides.projector.api import get_active_slide, update_projector
+from openslides.projector.models import SlideMixin
 
-from openslides.projector.projector import SlideMixin
 
-
-class Category(models.Model, SlideMixin):
+class Category(SlideMixin, models.Model):
     """
     The model for categories of topics.
+    """
+    slide_callback_name = 'topicvoting_category'
+    """
+    The callback_name for the slides.
     """
 
     name = models.CharField(max_length=255, verbose_name=ugettext_lazy('Name'))
@@ -26,11 +31,6 @@ class Category(models.Model, SlideMixin):
     and slide. This can be used if there was a runoff poll.
     """
 
-    prefix = 'topicvotingcategory'
-    """
-    The prefix for the slides, hyphen and underscore are not allowed.
-    """
-
     class Meta:
         ordering = ('name',)
 
@@ -40,15 +40,27 @@ class Category(models.Model, SlideMixin):
         """
         return self.name
 
-    @models.permalink
+    def save(self, *args, **kwargs):
+        """
+        Updates the projector if a topicvoting slide is on it.
+        """
+        value = super(Category, self).save(*args, **kwargs)
+        if (get_active_slide()['callback'] == 'topicvoting_category_list' or
+                get_active_slide()['callback'] == 'topicvoting_result'):
+            update_projector()
+        return value
+
     def get_absolute_url(self, link='update'):
         """
         Gets the url of the update view or the delete view of a category instance.
         """
         if link == 'update':
-            return ('topicvoting_category_update', [str(self.id)])
-        if link == 'delete':
-            return ('topicvoting_category_delete', [str(self.id)])
+            url = reverse('topicvoting_category_update', args=[str(self.id)])
+        elif link == 'delete':
+            url = reverse('topicvoting_category_delete', args=[str(self.id)])
+        else:
+            url = super(Category, self).get_absolute_url(link)
+        return url
 
     @property
     def sum_of_votes(self):
@@ -66,17 +78,10 @@ class Category(models.Model, SlideMixin):
         Returns the sum of votes and, as ths case may be, the weight as string.
         """
         if self.weight:
-            return '%d / %d' % (self.sum_of_votes, self.weight)
-        return str(self.sum_of_votes)
-
-    def slide(self):
-        """
-        Returns a dictionary with the data for the model slides.
-        """
-        return {
-            'category': self,
-            'title': pgettext('topicvoting', 'Category'),
-            'template': 'openslides_topicvoting/category_slide.html'}
+            string = '%d / %d' % (self.sum_of_votes, self.weight)
+        else:
+            string = str(self.sum_of_votes)
+        return string
 
 
 class Topic(models.Model):
@@ -128,28 +133,44 @@ class Topic(models.Model):
         else:
             return self.title
 
-    @models.permalink
+    def save(self, *args, **kwargs):
+        """
+        Updates the projector if a topicvoting slide is on it.
+        """
+        # TODO: Look for all cases and switch off unused update
+        value = super(Topic, self).save(*args, **kwargs)
+        if get_active_slide()['callback'].startswith('topicvoting'):
+            update_projector()
+        return value
+
     def get_absolute_url(self, link='update'):
         """
         Gets the url of the update view or the delete view of a topic instance.
         """
         if link == 'update':
-            return ('topicvoting_topic_update', [str(self.id)])
-        if link == 'delete':
-            return ('topicvoting_topic_delete', [str(self.id)])
+            url = reverse('topicvoting_topic_update', args=[str(self.id)])
+        elif link == 'delete':
+            url = reverse('topicvoting_topic_delete', args=[str(self.id)])
+        else:
+            url = super(Topic, self).get_absolute_url(link)
+        return url
 
     def get_votes_string(self):
         """
         Returns the votes and, as ths case may be, the weight as string.
         """
         if self.weight:
-            return '%d / %d' % (self.votes, self.weight)
-        return str(self.votes)
+            string = '%d / %d' % (self.votes, self.weight)
+        else:
+            string = str(self.votes)
+        return string
 
     def get_title_with_votes(self):
         """
         Gets the title and the votes if there are some.
         """
         if self.votes is not None:
-            return '%s (%s)' % (self.title, self.get_votes_string())
-        return self.title
+            title = '%s (%s)' % (self.title, self.get_votes_string())
+        else:
+            title = self.title
+        return title

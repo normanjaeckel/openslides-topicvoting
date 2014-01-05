@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Class and function for the voting system.
@@ -84,11 +83,14 @@ class Hoechstzahl(object):
                         hoechstzahl.topic.weight == category_list[-1]['hoechstzahl'].topic.weight):
                     runoff_poll_warning = True
                 category_list.append({'hoechstzahl': hoechstzahl, 'winner': winner})
-            category_list += (config['openslides_topicvoting_posts'] - len(category_list)) * [{'hoechstzahl': None, 'winner': False}]
+            category_list += (max(config['openslides_topicvoting_posts'], 3) - len(category_list)) * [{'hoechstzahl': None, 'winner': False}]
             result_table.append(category_list)
 
         # Return table and flags as dictionary
-        return {'result_table': result_table, 'runoff_poll_warning': runoff_poll_warning, 'topic_post_warning': topic_post_warning}
+        return {'result_table': result_table,
+                'winning_hoechstzahls': winning_hoechstzahls,
+                'runoff_poll_warning': runoff_poll_warning,
+                'topic_post_warning': topic_post_warning}
 
 
 def feed_hoechstzahls():
@@ -100,5 +102,5 @@ def feed_hoechstzahls():
     Hoechstzahl.all_hoechstzahls = []
     # Feed them
     for category in Category.objects.all():
-        for rank in range(config['openslides_topicvoting_posts']):
+        for rank in range(max(config['openslides_topicvoting_posts'], 3)):
             Hoechstzahl(category=category, rank=rank)

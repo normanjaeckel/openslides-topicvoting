@@ -86,7 +86,7 @@
             <tr>
                 <th>{% trans 'Category' context 'topicvoting' %}</th>
                 <th class="optional">{% trans 'Topics' %}</th>
-                <th>{% trans 'Votes' %}</th>
+                <th>{% trans 'Votes' %} / {% trans 'Runoff poll' %}</th>
                 <th class="mini_width">{% trans "Actions" %}</th>
             </tr>
         </thead>
@@ -114,6 +114,4 @@
             <tr><td colspan="4">{% trans 'No categories available.' context 'topicvoting' %}</td></tr>
         {% endfor %}
     </table>
-
-
 {% endblock %}

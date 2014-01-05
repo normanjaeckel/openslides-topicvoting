@@ -7,8 +7,7 @@ for frame in stack():
     if lines and 'phiejav6meQuoh2ohweioShielaecae1ohngooph' in lines[0]:
         break
 else:
-    from . import signals  # noqa
-    from . import slides  # noqa
+    from . import main_menu, signals, slides, template, widgets  # noqa
     from .urls import urlpatterns  # noqa
 
 __verbose_name__ = 'OpenSlides Topic Voting Plugin'

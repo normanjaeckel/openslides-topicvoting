@@ -38,7 +38,7 @@ Setup and activate a virtual environment::
 
 Install OpenSlides and the plugin from the Python Package Index (PyPI)::
 
-    $ pip install openslides-topicvoting==1.1.0a1  # or pip install <NAME_OF_ARCHIVE_FILE>
+    $ pip install openslides-topicvoting==1.1.0  # or pip install <NAME_OF_ARCHIVE_FILE>
 
 Start OpenSlides once to create its settings file if it does not exist yet::
 
@@ -76,9 +76,12 @@ Changelog
 
 Version 1.1.0 (unreleased)
 --------------------------
-* Updated to new plugin api of OpenSlides 1.6.
+- Updated to new plugin api of OpenSlides 1.6.
+- Updated to new apis of OpenSlides 1.6 (slides urls, views, widget, main menu entry).
+- Added winners as list to result view and slide.
+- Changed several template files and updated some code styling stuff.
 
 
 Version 1.0 (2014-01-04)
 ------------------------
-* First release of this plugin.
+- First release of this plugin.

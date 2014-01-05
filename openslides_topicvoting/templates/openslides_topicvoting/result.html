@@ -12,6 +12,17 @@
             <a href="{% url 'topicvoting_category_list' %}" class="btn btn-mini"><i class="icon-chevron-left"></i> {% trans 'Back to overview' %}</a>
         </small>
     </h1>
+
+    <h2>{% trans 'Winning topics' %}</h2>
+    <ul>
+        {% for winning_hoechstzahl in winning_hoechstzahls %}
+            <li>{{ winning_hoechstzahl.topic }}</li>
+        {% empty %}
+            {% trans 'No winners available.' %}
+        {% endfor %}
+    </ul>
+
+    <h2>{% trans 'Result table' %}</h2>
     <table class="table table-striped table-bordered">
         <caption class="hidden">{% trans 'Results' %}</caption>
          <tr>
@@ -43,5 +54,3 @@
         <p class="badge badge-warning">{% trans 'Attention: There is a runoff poll necessary.' %}</p>
     {% endif %}
 {% endblock %}
-
-

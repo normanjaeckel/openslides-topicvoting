@@ -1,15 +1,8 @@
-{% extends 'base-projector.html' %}
-
 {% load i18n %}
-{% load tags %}
 
-{% block title %}{% trans 'Topicvoting' %} – {% trans 'Results' %} – {{ block.super }}{% endblock %}
+<h1>{% trans 'Results' %}</h1>
 
-{% block content %}
-    <h1>{% trans 'Results' %}</h1>
-{% endblock %}
-
-{% block scrollcontent %}
+<h2>{% trans 'Result table' %}</h2>
 <table>
     <tr>
         <th>{% trans 'Divisor' %}</th>
@@ -34,9 +27,18 @@
     {% endfor %}
 </table>
 {% if topic_post_warning %}
-    <p><strong>{% trans 'Attention: There are less topics than posts.' %}</strong></p>
+    <br /><p><strong>{% trans 'Attention: There are less topics than posts.' %}</strong></p>
 {% endif %}
 {% if runoff_poll_warning %}
-    <p><strong>{% trans 'Attention: There is a runoff poll necessary.' %}</strong></p>
+    <br /><p><strong>{% trans 'Attention: There is a runoff poll necessary.' %}</strong></p>
 {% endif %}
-{% endblock %}
+
+<hr />
+<h2>{% trans 'Winning topics' %}</h2>
+<ul>
+    {% for winning_hoechstzahl in winning_hoechstzahls %}
+        <li>{{ winning_hoechstzahl.topic }}</li>
+    {% empty %}
+        {% trans 'No winners available.' %}
+    {% endfor %}
+</ul>
