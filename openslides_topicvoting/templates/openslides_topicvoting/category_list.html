@@ -65,11 +65,11 @@
                 <td>{% if topic.category %}{{ topic.category }}{% else %}<span class="label label-warning">{% trans 'Lost topic' %}</span>{% endif %}</td>
                 <td>
                     <span style="width: 1px; white-space: nowrap;">
-                        <a href="{% model_url topic 'update' %}"
+                        <a href="{{ topic|absolute_url:'update' }}"
                             rel="tooltip" data-original-title="{% trans 'Edit' %}"
                             class="btn btn-mini"><i class="icon-pencil"></i>
                         </a>
-                        <a href="{% model_url topic 'delete' %}"
+                        <a href="{{ topic|absolute_url:'delete' }}"
                             rel="tooltip" data-original-title="{% trans 'Delete' %}"
                             class="btn btn-mini"><i class="icon-remove"></i>
                         </a>
@@ -99,11 +99,11 @@
                 </td>
                 <td>
                     <span style="width: 1px; white-space: nowrap;">
-                        <a href="{% model_url category 'update' %}"
+                        <a href="{{ category|absolute_url:'update' }}"
                             rel="tooltip" data-original-title="{% trans 'Edit' %}"
                             class="btn btn-mini"><i class="icon-pencil"></i>
                         </a>
-                        <a href="{% model_url category 'delete' %}"
+                        <a href="{{ category|absolute_url:'delete' }}"
                             rel="tooltip" data-original-title="{% trans 'Delete' %}"
                             class="btn btn-mini"><i class="icon-remove"></i>
                         </a>

@@ -3,7 +3,8 @@ python:
   - "2.6"
   - "2.7"
 install:
-  - "pip install -r requirements.txt --use-mirrors"
+  - "pip install https://github.com/normanjaeckel/OpenSlides/archive/02b467762147996cd8e666cf87d5fe6a1a38638a.tar.gz"
+  - "pip install -r requirements.txt"
 script:
   - "PYTHONPATH=$PYTHONPATH DJANGO_SETTINGS_MODULE=tests.settings openslides django test"
   - "flake8 --max-line-length=150 --statistics openslides_topicvoting"
