@@ -11,15 +11,15 @@
         {% endfor %}
     </tr>
     {% for row in result_table %}
-        {% if row.0.hoechstzahl %}
+        {% if row.0 %}
         <tr>
             <td>
-                {{ row.0.hoechstzahl.topic.category }}
-                ({{ row.0.hoechstzahl.topic.category.get_votes_string }})
+                {{ row.0.topic.category }}
+                ({{ row.0.topic.category.get_votes_string }})
             </td>
-            {% for entry in row %}
-                <td{% if entry.winner %} style="font-weight:bold"{% endif %}>
-                    {{ entry.hoechstzahl.topic.get_title_with_votes }}<br />{{ entry.hoechstzahl.value|floatformat:2 }}
+            {% for hoechstzahl in row %}
+                <td{% if hoechstzahl.topic in winning_topics %} style="font-weight:bold"{% endif %}>
+                    {{ hoechstzahl.topic.get_title_with_votes }}<br />{{ hoechstzahl.value|floatformat:2 }}
                 </td>
             {% endfor %}
         </tr>
@@ -36,8 +36,8 @@
 <hr />
 <h2>{% trans 'Winning topics' %}</h2>
 <ul>
-    {% for winning_hoechstzahl in winning_hoechstzahls %}
-        <li>{{ winning_hoechstzahl.topic }}</li>
+    {% for topic in winning_topics %}
+        <li>{{ topic }}</li>
     {% empty %}
         {% trans 'No winners available.' %}
     {% endfor %}

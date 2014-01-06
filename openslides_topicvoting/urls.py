@@ -45,7 +45,11 @@ extra_patterns = patterns(
     # Voting result
     url(r'^result/$',
         views.TopicvotingResultView.as_view(),
-        name='topicvoting_result'))
+        name='topicvoting_result'),
+    url(r'^result/print/$',
+        views.TopicvotingResultView.as_view(template_name='openslides_topicvoting/result_print.html'),
+        name='topicvoting_result_print'))
+
 
 urlpatterns = patterns(
     '',

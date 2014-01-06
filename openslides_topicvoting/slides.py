@@ -26,7 +26,7 @@ def result_slide(**kwargs):
     feed_hoechstzahls()
     result_table_and_info = Hoechstzahl.get_result_table_and_info()
     context = {'result_table': result_table_and_info['result_table'],
-               'winning_hoechstzahls': result_table_and_info['winning_hoechstzahls'],
+               'winning_topics': result_table_and_info['winning_topics'],
                'runoff_poll_warning': result_table_and_info['runoff_poll_warning'],
                'topic_post_warning': result_table_and_info['topic_post_warning'],
                'divisors': map(lambda rank: rank * 2 + 1, range(max(config['openslides_topicvoting_posts'], 3)))}

@@ -81,7 +81,7 @@ class TopicvotingResultView(TopicvotingCategoryListView):
         feed_hoechstzahls()
         result_table_and_info = Hoechstzahl.get_result_table_and_info()
         context['result_table'] = result_table_and_info['result_table']
-        context['winning_hoechstzahls'] = result_table_and_info['winning_hoechstzahls']
+        context['winning_topics'] = result_table_and_info['winning_topics']
         context['runoff_poll_warning'] = result_table_and_info['runoff_poll_warning']
         context['topic_post_warning'] = result_table_and_info['topic_post_warning']
         context['divisors'] = map(lambda rank: rank * 2 + 1, range(max(config['openslides_topicvoting_posts'], 3)))
