@@ -13,29 +13,34 @@ extra_patterns = patterns(
     # Categories and Topics
     url(r'^$',
         views.TopicvotingCategoryListView.as_view(),
-        name='topicvoting_category_list',),
+        name='topicvoting_category_list'),
 
     # Category
     url(r'^category/create/$',
         views.TopicvotingCategoryCreateView.as_view(),
-        name='topicvoting_category_create',),
+        name='topicvoting_category_create'),
     url(r'^category/(?P<pk>\d+)/update/$',
         views.TopicvotingCategoryUpdateView.as_view(),
-        name='topicvoting_category_update',),
+        name='topicvoting_category_update'),
     url(r'^category/(?P<pk>\d+)/delete/$',
         views.TopicvotingCategoryDeleteView.as_view(),
-        name='topicvoting_category_delete',),
+        name='topicvoting_category_delete'),
 
     # Topic
     url(r'^topic/create/$',
         views.TopicvotingTopicCreateView.as_view(),
-        name='topicvoting_topic_create',),
+        name='topicvoting_topic_create'),
     url(r'^topic/(?P<pk>\d+)/update/$',
         views.TopicvotingTopicUpdateView.as_view(),
-        name='topicvoting_topic_update',),
+        name='topicvoting_topic_update'),
     url(r'^topic/(?P<pk>\d+)/delete/$',
         views.TopicvotingTopicDeleteView.as_view(),
-        name='topicvoting_topic_delete',),
+        name='topicvoting_topic_delete'),
+
+    # Import
+    url(r'^import/csv/$',
+        views.TopicvotingCSVImportView.as_view(),
+        name='topicvoting_import_csv'),
 
     # Ballot paper
     url(r'^ballotpaper/$',

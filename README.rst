@@ -80,6 +80,7 @@ Version 1.1.0 (unreleased)
 - Updated to new apis of OpenSlides 1.6 (slides urls, views, widget, main menu entry).
 - Added winners as list to result view and slide.
 - Added list of all results for print.
+- Added csv import.
 - Changed several template files and updated some code styling stuff.
 
 

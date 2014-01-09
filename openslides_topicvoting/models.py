@@ -45,8 +45,8 @@ class Category(SlideMixin, models.Model):
         Updates the projector if a topicvoting slide is on it.
         """
         value = super(Category, self).save(*args, **kwargs)
-        if (get_active_slide()['callback'] == 'topicvoting_category_list' or
-                get_active_slide()['callback'] == 'topicvoting_result'):
+        callback = get_active_slide()['callback']
+        if callback == 'topicvoting_category_list' or callback == 'topicvoting_result':
             update_projector()
         return value
 
@@ -139,7 +139,8 @@ class Topic(models.Model):
         """
         # TODO: Look for all cases and switch off unused update
         value = super(Topic, self).save(*args, **kwargs)
-        if get_active_slide()['callback'].startswith('topicvoting'):
+        callback = get_active_slide()['callback']
+        if callback and callback.startswith('topicvoting'):
             update_projector()
         return value
 

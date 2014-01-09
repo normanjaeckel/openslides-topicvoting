@@ -36,6 +36,8 @@
                         <li><a href="{% url 'topicvoting_topic_create' %}"><i class="icon-plus"></i> {% trans 'New Topic' %}</a></li>
                     </ul>
                 </div>
+                <a href="{% url 'topicvoting_import_csv' %}" class="btn btn-mini" rel="tooltip" data-original-title="{% trans 'Import' %}"><i class="icon-import"></i> {% trans 'Import' %}</a>
+
             {% endif %}
             <a href="{% url 'topicvoting_ballotpaper' %}" class="btn btn-mini" rel="tooltip" data-original-title="{% trans 'Ballot paper' %}"><i class="icon-print"></i> {% trans 'Ballot paper' %}</a>
             <a href="{% url 'topicvoting_result' %}" class="btn btn-mini" rel="tooltip" data-original-title="{% trans 'Results' %}"><i class="icon-assignment"></i> {% trans 'Results' %}</a>
@@ -51,7 +53,7 @@
         <thead>
             <tr>
                 <th>{% trans 'Topic' %}</th>
-                <th class="optional">{% trans 'Submitter' %}</th>
+                <th class="optional">{% trans 'Submitter' context 'topicvoting' %}</th>
                 <th>{% trans 'Category' context 'topicvoting' %}</th>
                 <th class="mini_width">{% trans "Actions" %}</th>
             </tr>
