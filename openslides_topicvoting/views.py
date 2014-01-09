@@ -119,7 +119,7 @@ class TopicvotingCSVImportView(FormView):
                     category_object = None
                 Topic.objects.create(title=title, submitter=submitter, category=category_object)
                 topics += 1
-            message = _('%d categories and %d topics successfully imported.') % (categories, topics)
+            message = _('%(categories)d categories and %(topics)d topics successfully imported.') % {'categories': categories, 'topics': topics}
             error = False
         return message, error
 
