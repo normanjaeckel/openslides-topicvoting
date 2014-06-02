@@ -48,13 +48,14 @@ class Hoechstzahl(object):
                 winning_hoechstzahls.append(results_generator.next())
             except StopIteration:
                 topic_post_warning = True
+                runoff_poll_warning = False
                 break
         else:
             topic_post_warning = False
             try:
                 first_looser_hoechstzahl = results_generator.next()
             except StopIteration:
-                pass
+                runoff_poll_warning = False
             else:
                 # First runoff poll check: Check equal hoechstzahls between the categories.
                 if (first_looser_hoechstzahl.value == winning_hoechstzahls[-1].value and

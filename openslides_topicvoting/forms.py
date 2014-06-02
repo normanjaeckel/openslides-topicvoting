@@ -4,7 +4,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy
 
 
-class TopicvotingCSVImportForm(forms.Form):  # CssClassMixin
+class TopicvotingCSVImportForm(forms.Form):  # TODO: Think about CssClassMixin
     """
     Form to choose the import file.
     """

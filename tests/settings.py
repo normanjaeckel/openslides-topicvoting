@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
+#
+# Settings file for tests only
+#
 
+import os
 from openslides.global_settings import *  # noqa
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+SECRET_KEY = 'secret'
 
 DATABASES = {
     'default': {
@@ -12,32 +18,26 @@ DATABASES = {
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
-        'PORT': '',
-    }
-}
+        'PORT': ''}}
 
-# Set timezone
-TIME_ZONE = 'Europe/Berlin'
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'secret'
-
-# Add OpenSlides plugins to this list
-INSTALLED_PLUGINS = (
-    'openslides_topicvoting',
-)
+INSTALLED_PLUGINS += (
+    'openslides_topicvoting',)
 
 INSTALLED_APPS += INSTALLED_PLUGINS
 
-# Absolute path to the directory that holds media.
-# Use path of this file for tests
-MEDIA_ROOT = os.path.realpath(os.path.dirname(__file__))
+TIME_ZONE = 'Europe/Berlin'
 
-# Path to Whoosh search index
-# Use RAM storage for tests
+MEDIA_ROOT = ''
+
+# Use RAM storage
 HAYSTACK_CONNECTIONS['default']['STORAGE'] = 'ram'
 
-# Use a faster passwort hasher for tests
+TEMPLATE_DIRS = (
+    filesystem2unicode(os.path.join(SITE_ROOT, 'templates')),)
+
+STATICFILES_DIRS = (
+    filesystem2unicode(os.path.join(SITE_ROOT, 'static')),)
+
+# Use a faster passwort hasher
 PASSWORD_HASHERS = (
-    'django.contrib.auth.hashers.MD5PasswordHasher',
-)
+    'django.contrib.auth.hashers.MD5PasswordHasher',)

@@ -2,13 +2,13 @@
 
 {% load i18n %}
 
-{% block title %}{% trans 'Topicvoting' %} – {{ block.super }}{% endblock %}
+{% block title %}{% trans 'Import categories and topics' context 'topicvoting' %} – {{ block.super }}{% endblock %}
 
 {% block content %}
     <h1>
         {% trans 'Import categories and topics' context 'topicvoting' %}
         <small class="pull-right">
-            <a href="{% url 'topicvoting_category_list' %}" class="btn btn-mini"><i class="icon-chevron-left"></i> {% trans 'Back to overview' %}</a>
+        <a href="{% url 'topicvoting_category_list' %}" class="btn btn-mini"><i class="icon-chevron-left"></i> {% trans 'Back to overview' %}</a>
         </small>
     </h1>
 
@@ -18,14 +18,17 @@
     <ul>
         <li>
             {% trans 'Required comma separated values' %}:<br />
-            <code>{% trans 'topic, submitter, category' %}</code>
+            <code>{% trans 'Topic, Submitter, Category' context 'topicvoting' %}</code>
         </li>
         <li>
-            {% trans 'Submitter and category are optional and may be empty' %}.
+            {% trans 'Submitter and category are optional and may be empty' context 'topicvoting' %}.
         </li>
         <li>{% trans 'The first line (header) is ignored' %}.</li>
         <li>
             {% trans 'Required CSV file encoding is UTF-8' %}.
+        </li>
+        <li>
+            <a href="https://github.com/normanjaeckel/openslides-topicvoting/blob/1.1.0/extras/example_data_de.csv">{% trans 'Use the CSV example file from the repository.' %}</a>
         </li>
     </ul>
 

@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext as _
 from django.utils.translation import pgettext_lazy, ugettext_lazy, ugettext_noop
+
 from openslides.projector.api import get_active_slide, update_projector
 from openslides.projector.models import SlideMixin
 

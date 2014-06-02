@@ -55,7 +55,9 @@
                 <th>{% trans 'Topic' %}</th>
                 <th class="optional">{% trans 'Submitter' context 'topicvoting' %}</th>
                 <th>{% trans 'Category' context 'topicvoting' %}</th>
-                <th class="mini_width">{% trans "Actions" %}</th>
+                {% if perms.openslides_topicvoting.can_manage %}
+                    <th class="mini_width">{% trans "Actions" %}</th>
+                {% endif %}
             </tr>
         </thead>
         {% for topic in topics %}
@@ -65,18 +67,20 @@
                 </td>
                 <td class="optional">{{ topic.submitter }}</td>
                 <td>{% if topic.category %}{{ topic.category }}{% else %}<span class="label label-warning">{% trans 'Lost topic' %}</span>{% endif %}</td>
-                <td>
-                    <span style="width: 1px; white-space: nowrap;">
-                        <a href="{{ topic|absolute_url:'update' }}"
-                            rel="tooltip" data-original-title="{% trans 'Edit' %}"
-                            class="btn btn-mini"><i class="icon-pencil"></i>
-                        </a>
-                        <a href="{{ topic|absolute_url:'delete' }}"
-                            rel="tooltip" data-original-title="{% trans 'Delete' %}"
-                            class="btn btn-mini"><i class="icon-remove"></i>
-                        </a>
-                    </span>
-                </td>
+                {% if perms.openslides_topicvoting.can_manage %}
+                    <td>
+                        <span style="width: 1px; white-space: nowrap;">
+                            <a href="{{ topic|absolute_url:'update' }}"
+                                rel="tooltip" data-original-title="{% trans 'Edit' %}"
+                                class="btn btn-mini"><i class="icon-pencil"></i>
+                            </a>
+                            <a href="{{ topic|absolute_url:'delete' }}"
+                                rel="tooltip" data-original-title="{% trans 'Delete' %}"
+                                class="btn btn-mini"><i class="icon-remove"></i>
+                            </a>
+                        </span>
+                    </td>
+                {% endif %}
             </tr>
         {% endfor %}
     </table>
@@ -89,7 +93,9 @@
                 <th>{% trans 'Category' context 'topicvoting' %}</th>
                 <th class="optional">{% trans 'Topics' %}</th>
                 <th>{% trans 'Votes' %} / {% trans 'Runoff poll' %}</th>
-                <th class="mini_width">{% trans "Actions" %}</th>
+                {% if perms.openslides_topicvoting.can_manage %}
+                    <th class="mini_width">{% trans "Actions" %}</th>
+                {% endif %}
             </tr>
         </thead>
         {% for category in category_list %}
@@ -99,18 +105,20 @@
                 <td>
                     {{ category.get_votes_string }}
                 </td>
-                <td>
-                    <span style="width: 1px; white-space: nowrap;">
-                        <a href="{{ category|absolute_url:'update' }}"
-                            rel="tooltip" data-original-title="{% trans 'Edit' %}"
-                            class="btn btn-mini"><i class="icon-pencil"></i>
-                        </a>
-                        <a href="{{ category|absolute_url:'delete' }}"
-                            rel="tooltip" data-original-title="{% trans 'Delete' %}"
-                            class="btn btn-mini"><i class="icon-remove"></i>
-                        </a>
-                    </span>
-                </td>
+                {% if perms.openslides_topicvoting.can_manage %}
+                    <td>
+                        <span style="width: 1px; white-space: nowrap;">
+                            <a href="{{ category|absolute_url:'update' }}"
+                                rel="tooltip" data-original-title="{% trans 'Edit' %}"
+                                class="btn btn-mini"><i class="icon-pencil"></i>
+                            </a>
+                            <a href="{{ category|absolute_url:'delete' }}"
+                                rel="tooltip" data-original-title="{% trans 'Delete' %}"
+                                class="btn btn-mini"><i class="icon-remove"></i>
+                            </a>
+                        </span>
+                    </td>
+                {% endif %}
             </tr>
         {% empty %}
             <tr><td colspan="4">{% trans 'No categories available.' context 'topicvoting' %}</td></tr>

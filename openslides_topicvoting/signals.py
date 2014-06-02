@@ -52,8 +52,7 @@ def setup_openslides_topicvoting_config(sender, **kwargs):
 
     return ConfigCollection(title=ugettext_lazy('Topicvoting'),
                             url='openslides_topicvoting',
-                            required_permission='openslides_topicvoting.can_manage',
-                            weight=130,
+                            weight=210,
                             variables=(posts, ballotpaper_title, ballotpaper_text))
 
 

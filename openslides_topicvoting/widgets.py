@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+"""
+Dashboard widget for the plugin.
+"""
 
 from django.utils.translation import ugettext_lazy
 
@@ -14,8 +17,8 @@ class TopicvotingWidget(Widget):
     """
     name = 'topicvoting'
     verbose_name = ugettext_lazy('Topicvoting')
-    permission_required = 'projector.can_manage_projector'
-    default_weight = 130
+    required_permission = 'core.can_manage_projector'
+    default_weight = 210
     template_name = 'openslides_topicvoting/widget_category.html'
     icon_css_class = 'icon-podium'
     more_link_pattern_name = 'topicvoting_category_list'

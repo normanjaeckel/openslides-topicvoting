@@ -30,36 +30,16 @@ Change to a new directory::
 
     $ cd OpenSlides
 
-Setup and activate a virtual environment::
+Setup and activate a virtual environment and install OpenSlides and the
+plugin in it::
 
     $ virtualenv .virtualenv
 
     $ source .virtualenv/bin/activate
 
-Install OpenSlides and the plugin from the Python Package Index (PyPI)::
+    $ pip install "openslides>=1.6,<1.7" openslides-topicvoting
 
-    $ pip install openslides-topicvoting==1.1.0  # or pip install <NAME_OF_ARCHIVE_FILE>
-
-Start OpenSlides once to create its settings file if it does not exist yet::
-
-    $ openslides
-
-Stop OpenSlides::
-
-    CTRL + C
-
-Edit the file ``settings.py``. You can find it in the directory
-``openslides`` in your user config path given in the environment variable
-``$XDG_CONFIG_HOME``. Default is ``~/.config/openslides/`` on GNU/Linux and
-``$HOME\AppData\Local\openslides\`` on Windows. Insert the line
-``'openslides_topicvoting',`` into the INSTALLED_PLUGINS tuple::
-
-    # Add OpenSlides plugins to this tuple
-    INSTALLED_PLUGINS = (
-        'openslides_topicvoting',
-    )
-
-Restart OpenSlides::
+Start OpenSlides::
 
     $ openslides
 
@@ -67,8 +47,8 @@ Restart OpenSlides::
 License and authors
 ===================
 
-This plugin is released under the MIT License, see LICENSE file. The
-authors of this plugin are mentioned in the AUTHORS file.
+This plugin is Free/Libre Open Source Software and distributed under the
+MIT License, see LICENSE file. The authors are mentioned in the AUTHORS file.
 
 
 Changelog
@@ -76,14 +56,14 @@ Changelog
 
 Version 1.1.0 (unreleased)
 --------------------------
-- Updated to new plugin api of OpenSlides 1.6.
-- Updated to new apis of OpenSlides 1.6 (slides urls, views, widget, main menu entry).
-- Added winners as list to result view and slide.
-- Added list of all results for print.
-- Added csv import.
-- Changed several template files and updated some code styling stuff.
+* Updated to new plugin api and to other api changes of OpenSlides 1.6
+  (slides, urls, views, widget and main menu entry).
+* Added winners as list to result view and slide.
+* Added list of all results for print.
+* Added csv import.
+* Changed several template files and updated some code styling stuff.
 
 
 Version 1.0 (2014-01-04)
 ------------------------
-- First release of this plugin.
+* First release of this plugin.

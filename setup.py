@@ -2,19 +2,20 @@
 
 from setuptools import find_packages, setup
 
+package_name = 'openslides-topicvoting'
 module_name = 'openslides_topicvoting'
 
 # The following commented unique string is used to detect this import.
-module = __import__(module_name)  # phiejav6meQuoh2ohweioShielaecae1ohngooph
+module = __import__(module_name)  # Ro6Jaihaetahwex8eChohr3seeque5uovaehoyoo
 
 with open('README.rst') as readme:
     long_description = readme.read()
 
-with open('requirements_production.txt') as requirements_production:
-    install_requires = requirements_production.readlines()
+with open('requirements.txt') as requirements:
+    install_requires = requirements.readlines()
 
 setup(
-    name='openslides-topicvoting',
+    name=package_name,
     version=module.__version__,
     description=module.__verbose_name__,
     long_description=long_description,
