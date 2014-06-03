@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-03 19:26+0200\n"
+"POT-Creation-Date: 2014-06-03 20:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -19,14 +19,6 @@ msgstr ""
 #: csv_import.py:49
 #, python-format
 msgid "%(categories)d categories and %(topics)d topics successfully imported."
-msgstr ""
-
-#: forms.py:13
-msgid "CSV File"
-msgstr ""
-
-#: forms.py:14
-msgid "The file has to be encoded in UTF-8."
 msgstr ""
 
 #: main_menu.py:15 signals.py:53 widgets.py:19
