@@ -1,16 +1,25 @@
-# This is the translation file of Topic Voting Plugin for OpenSlides.
-# Copyright (c) 2013 Authors of Topic Voting Plugin for OpenSlides, see AUTHORS
-# This file is distributed under the same license as the PACKAGE package.
+# This is the translation file of OpenSlides Topic Voting Plugin.
+# Copyright (c) 2013-2014 Authors of OpenSlides Topic Voting Plugin, see AUTHORS.
+# This file is distributed under the same license as the package.
 #
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-09 01:58+0100\n"
+"POT-Creation-Date: 2014-06-03 19:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: csv_import.py:20
+msgid "Import file has wrong character encoding, only UTF-8 is supported!"
+msgstr ""
+
+#: csv_import.py:49
+#, python-format
+msgid "%(categories)d categories and %(topics)d topics successfully imported."
+msgstr ""
 
 #: forms.py:13
 msgid "CSV File"
@@ -20,55 +29,54 @@ msgstr ""
 msgid "The file has to be encoded in UTF-8."
 msgstr ""
 
-#: main_menu.py:12 signals.py:53 widgets.py:16
+#: main_menu.py:15 signals.py:53 widgets.py:19
 #: templates/openslides_topicvoting/category_form.html:7
 #: templates/openslides_topicvoting/category_list.html:7
 #: templates/openslides_topicvoting/category_list.html:27
 #: templates/openslides_topicvoting/category_slide_list.html:3
-#: templates/openslides_topicvoting/csv_import.html:5
 #: templates/openslides_topicvoting/result.html:7
 #: templates/openslides_topicvoting/topic_form.html:7
 msgid "Topicvoting"
 msgstr ""
 
-#: models.py:23
+#: models.py:24
 msgid "Name"
 msgstr ""
 
-#: models.py:28 models.py:115
+#: models.py:29 models.py:116
 msgid "Weight (for runoff poll)"
 msgstr ""
 
-#: models.py:92
+#: models.py:93
 msgid "Title"
 msgstr ""
 
-#: models.py:97
+#: models.py:98
 msgid "Submitter"
 msgstr ""
 
-#: models.py:102 templates/openslides_topicvoting/category_form.html:7
+#: models.py:103 templates/openslides_topicvoting/category_form.html:7
 #: templates/openslides_topicvoting/category_form.html:10
 #: templates/openslides_topicvoting/category_list.html:57
-#: templates/openslides_topicvoting/category_list.html:89
+#: templates/openslides_topicvoting/category_list.html:93
 #: templates/openslides_topicvoting/category_slide.html:3
 msgctxt "topicvoting"
 msgid "Category"
 msgstr ""
 
-#: models.py:109 templates/openslides_topicvoting/category_list.html:91
+#: models.py:110 templates/openslides_topicvoting/category_list.html:95
 msgid "Votes"
 msgstr ""
 
-#: models.py:124
+#: models.py:125
 msgid "Can see topicvoting categories and topics"
 msgstr ""
 
-#: models.py:125
+#: models.py:126
 msgid "Can manage topicvoting categories and topics"
 msgstr ""
 
-#: models.py:132
+#: models.py:133
 #, python-format
 msgid "%(title)s (proposed by %(submitter)s)"
 msgstr ""
@@ -89,15 +97,6 @@ msgstr ""
 msgid "Notice on the ballot paper"
 msgstr ""
 
-#: views.py:97
-msgid "Import file has wrong character encoding. Only UTF-8 is supported."
-msgstr ""
-
-#: views.py:122
-#, python-format
-msgid "%(categories)d categories and %(topics)d topics successfully imported."
-msgstr ""
-
 #: templates/openslides_topicvoting/ballotpaper.html:8
 #: templates/openslides_topicvoting/category_list.html:42
 msgid "Ballot paper"
@@ -111,13 +110,13 @@ msgid "Back to overview"
 msgstr ""
 
 #: templates/openslides_topicvoting/category_form.html:20
-#: templates/openslides_topicvoting/csv_import.html:39
+#: templates/openslides_topicvoting/csv_import.html:42
 #: templates/openslides_topicvoting/topic_form.html:20
 msgid "Cancel"
 msgstr ""
 
 #: templates/openslides_topicvoting/category_form.html:23
-#: templates/openslides_topicvoting/csv_import.html:42
+#: templates/openslides_topicvoting/csv_import.html:45
 #: templates/openslides_topicvoting/topic_form.html:23
 msgid "required"
 msgstr ""
@@ -136,7 +135,7 @@ msgid "New Topic"
 msgstr ""
 
 #: templates/openslides_topicvoting/category_list.html:39
-#: templates/openslides_topicvoting/csv_import.html:36
+#: templates/openslides_topicvoting/csv_import.html:39
 msgid "Import"
 msgstr ""
 
@@ -151,7 +150,7 @@ msgstr ""
 
 #: templates/openslides_topicvoting/category_list.html:47
 #: templates/openslides_topicvoting/category_list.html:52
-#: templates/openslides_topicvoting/category_list.html:90
+#: templates/openslides_topicvoting/category_list.html:94
 msgid "Topics"
 msgstr ""
 
@@ -172,38 +171,38 @@ msgctxt "topicvoting"
 msgid "Submitter"
 msgstr ""
 
-#: templates/openslides_topicvoting/category_list.html:58
-#: templates/openslides_topicvoting/category_list.html:92
+#: templates/openslides_topicvoting/category_list.html:59
+#: templates/openslides_topicvoting/category_list.html:97
 msgid "Actions"
 msgstr ""
 
-#: templates/openslides_topicvoting/category_list.html:67
+#: templates/openslides_topicvoting/category_list.html:69
 msgid "Lost topic"
 msgstr ""
 
-#: templates/openslides_topicvoting/category_list.html:71
-#: templates/openslides_topicvoting/category_list.html:105
+#: templates/openslides_topicvoting/category_list.html:74
+#: templates/openslides_topicvoting/category_list.html:112
 #: templates/openslides_topicvoting/widget_category.html:47
 msgid "Edit"
 msgstr ""
 
-#: templates/openslides_topicvoting/category_list.html:75
-#: templates/openslides_topicvoting/category_list.html:109
+#: templates/openslides_topicvoting/category_list.html:78
+#: templates/openslides_topicvoting/category_list.html:116
 #: templates/openslides_topicvoting/widget_category.html:43
 msgid "Delete"
 msgstr ""
 
-#: templates/openslides_topicvoting/category_list.html:84
-#: templates/openslides_topicvoting/category_list.html:86
+#: templates/openslides_topicvoting/category_list.html:88
+#: templates/openslides_topicvoting/category_list.html:90
 msgctxt "topicvoting"
 msgid "Categories"
 msgstr ""
 
-#: templates/openslides_topicvoting/category_list.html:91
+#: templates/openslides_topicvoting/category_list.html:95
 msgid "Runoff poll"
 msgstr ""
 
-#: templates/openslides_topicvoting/category_list.html:116
+#: templates/openslides_topicvoting/category_list.html:124
 #: templates/openslides_topicvoting/category_slide_list.html:8
 #: templates/openslides_topicvoting/widget_category.html:57
 msgctxt "topicvoting"
@@ -225,6 +224,7 @@ msgctxt "topicvoting"
 msgid "All categories"
 msgstr ""
 
+#: templates/openslides_topicvoting/csv_import.html:5
 #: templates/openslides_topicvoting/csv_import.html:9
 msgctxt "topicvoting"
 msgid "Import categories and topics"
@@ -244,10 +244,12 @@ msgid "Required comma separated values"
 msgstr ""
 
 #: templates/openslides_topicvoting/csv_import.html:21
-msgid "topic, submitter, category"
+msgctxt "topicvoting"
+msgid "Topic, Submitter, Category"
 msgstr ""
 
 #: templates/openslides_topicvoting/csv_import.html:24
+msgctxt "topicvoting"
 msgid "Submitter and category are optional and may be empty"
 msgstr ""
 
@@ -257,6 +259,10 @@ msgstr ""
 
 #: templates/openslides_topicvoting/csv_import.html:28
 msgid "Required CSV file encoding is UTF-8"
+msgstr ""
+
+#: templates/openslides_topicvoting/csv_import.html:31
+msgid "Use the CSV example file from the repository."
 msgstr ""
 
 #: templates/openslides_topicvoting/result.html:13
