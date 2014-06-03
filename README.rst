@@ -1,8 +1,6 @@
-====================================
- Topic Voting Plugin for OpenSlides
-====================================
-
-Version 1.1 (unreleased)
+================================
+ OpenSlides Topic Voting Plugin
+================================
 
 Overview
 ========
@@ -14,53 +12,58 @@ Sainte-Laguë method.
 Requirements
 ============
 
-OpenSlides 1.4.x (http://openslides.org/)
+OpenSlides 1.6.x (http://openslides.org/)
 
 
 Install
 =======
 
-This is only an example instruction for install Topic Voting Plugin for
-OpenSlides on GNU/Linux. It can also be installed as any other python
-package and on other platforms, e. g. on Windows.
+This is only an example instruction to install the plugin on GNU/Linux. It
+can also be installed as any other python package and on other platforms,
+e. g. on Windows.
 
 Change to a new directory::
+
+    $ cd
 
     $ mkdir OpenSlides
 
     $ cd OpenSlides
 
-Setup and activate a virtual environment and install OpenSlides and Topic
-Voting Plugin for OpenSlides in it::
+Setup and activate a virtual environment and install OpenSlides and the
+plugin in it::
 
     $ virtualenv .virtualenv
 
     $ source .virtualenv/bin/activate
 
-    $ pip install openslides-topicvoting==1.0
+    $ pip install "openslides>=1.6,<1.7" openslides-topicvoting
 
-Start OpenSlides once to create its settings file if it does not exist yet::
-
-    $ openslides
-
-Stop OpenSlides::
-
-    CTRL + C
-
-Edit the settings.py file. You can find it in the directory openslides in
-your user config path given in the environment variable $XDG_CONFIG_HOME.
-Default is ``~/.config/openslides`` on GNU/Linux (and
-``$HOME\AppData\Local\openslides`` on Windows). Insert the line
-'openslides_topicvoting' into the INSTALLED_PLUGINS tuple::
-
-    INSTALLED_PLUGINS = (
-        'openslides_topicvoting',
-    )
-
-Synchronize the database to add the new tables::
-
-    $ openslides --syncdb
-
-Restart OpenSlides::
+Start OpenSlides::
 
     $ openslides
+
+
+License and authors
+===================
+
+This plugin is Free/Libre Open Source Software and distributed under the
+MIT License, see LICENSE file. The authors are mentioned in the AUTHORS file.
+
+
+Changelog
+=========
+
+Version 1.1.0 (unreleased)
+--------------------------
+* Updated to new plugin api and to other api changes of OpenSlides 1.6
+  (slides, urls, views, widget and main menu entry).
+* Added winners as list to result view and slide.
+* Added list of all results for print.
+* Added csv import.
+* Changed several template files and updated some code styling stuff.
+
+
+Version 1.0 (2014-01-04)
+------------------------
+* First release of this plugin.

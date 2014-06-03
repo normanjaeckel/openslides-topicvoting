@@ -1,7 +1,1 @@
-# Requirements for the plugin in production
--r requirements_production.txt
-
-# Requirements for development and tests
-django-discover-runner==1.0
-Fabric==1.7.0
-pep8==1.4.6
+openslides>=1.6,<1.7

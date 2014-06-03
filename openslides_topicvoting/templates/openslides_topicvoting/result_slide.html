@@ -1,15 +1,8 @@
-{% extends 'base-projector.html' %}
-
 {% load i18n %}
-{% load tags %}
 
-{% block title %}{% trans 'Topicvoting' %} – {% trans 'Results' %} – {{ block.super }}{% endblock %}
+<h1>{% trans 'Results' %}</h1>
 
-{% block content %}
-    <h1>{% trans 'Results' %}</h1>
-{% endblock %}
-
-{% block scrollcontent %}
+<h2>{% trans 'Result table' %}</h2>
 <table>
     <tr>
         <th>{% trans 'Divisor' %}</th>
@@ -18,15 +11,15 @@
         {% endfor %}
     </tr>
     {% for row in result_table %}
-        {% if row.0.hoechstzahl %}
+        {% if row.0 %}
         <tr>
             <td>
-                {{ row.0.hoechstzahl.topic.category }}
-                ({{ row.0.hoechstzahl.topic.category.get_votes_string }})
+                {{ row.0.topic.category }}
+                ({{ row.0.topic.category.get_votes_string }})
             </td>
-            {% for entry in row %}
-                <td{% if entry.winner %} style="font-weight:bold"{% endif %}>
-                    {{ entry.hoechstzahl.topic.get_title_with_votes }}<br />{{ entry.hoechstzahl.value|floatformat:2 }}
+            {% for hoechstzahl in row %}
+                <td{% if hoechstzahl.topic in winning_topics %} style="font-weight:bold"{% endif %}>
+                    {{ hoechstzahl.topic.get_title_with_votes }}<br />{{ hoechstzahl.value|floatformat:2 }}
                 </td>
             {% endfor %}
         </tr>
@@ -34,9 +27,18 @@
     {% endfor %}
 </table>
 {% if topic_post_warning %}
-    <p><strong>{% trans 'Attention: There are less topics than posts.' %}</strong></p>
+    <br /><p><strong>{% trans 'Attention: There are less topics than posts.' %}</strong></p>
 {% endif %}
 {% if runoff_poll_warning %}
-    <p><strong>{% trans 'Attention: There is a runoff poll necessary.' %}</strong></p>
+    <br /><p><strong>{% trans 'Attention: There is a runoff poll necessary.' %}</strong></p>
 {% endif %}
-{% endblock %}
+
+<hr />
+<h2>{% trans 'Winning topics' %}</h2>
+<ul>
+    {% for topic in winning_topics %}
+        <li>{{ topic }}</li>
+    {% empty %}
+        {% trans 'No winners available.' %}
+    {% endfor %}
+</ul>

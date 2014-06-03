@@ -1,45 +1,43 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+#
+# Settings file for tests only
+#
 
-import openslides.main
-from openslides.global_settings import *
+import os
+from openslides.global_settings import *  # noqa
 
-# Use 'DEBUG = True' to get more details for server errors
-# (Default for releases: 'False')
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-DBPATH = ''
+SECRET_KEY = 'secret'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': DBPATH,
+        'NAME': '',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
-        'PORT': '',
-    }
-}
+        'PORT': ''}}
 
-# Set timezone
-TIME_ZONE = 'Europe/Berlin'
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'secred'
-
-# Add OpenSlides plugins to this list (see example entry in comment)
-INSTALLED_PLUGINS = (
-    'openslides_topicvoting',
-)
+INSTALLED_PLUGINS += (
+    'openslides_topicvoting',)
 
 INSTALLED_APPS += INSTALLED_PLUGINS
 
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
+TIME_ZONE = 'Europe/Berlin'
+
 MEDIA_ROOT = ''
 
-# New top level setting for django-discover-runner
-# https://github.com/jezdez/django-discover-runner
-import os
-TEST_DISCOVER_TOP_LEVEL = os.path.dirname(os.path.dirname(__file__))
+# Use RAM storage
+HAYSTACK_CONNECTIONS['default']['STORAGE'] = 'ram'
+
+TEMPLATE_DIRS = (
+    filesystem2unicode(os.path.join(SITE_ROOT, 'templates')),)
+
+STATICFILES_DIRS = (
+    filesystem2unicode(os.path.join(SITE_ROOT, 'static')),)
+
+# Use a faster passwort hasher
+PASSWORD_HASHERS = (
+    'django.contrib.auth.hashers.MD5PasswordHasher',)
