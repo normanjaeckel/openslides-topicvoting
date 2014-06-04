@@ -12,4 +12,4 @@ else:
 
 __verbose_name__ = 'OpenSlides Topic Voting Plugin'
 __description__ = 'This plugin for OpenSlides features a structured voting on topics using the Sainte-Laguë method.'
-__version__ = '1.1.0-dev'
+__version__ = '1.1.0'
